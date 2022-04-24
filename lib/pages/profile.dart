@@ -11,7 +11,7 @@ class ProfilePageWidget extends StatefulWidget {
 
 class _ProfilePageWidgetState extends State<ProfilePageWidget> with DNDManPageMixin {
   @override
-  List<Widget> makeButtons(BuildContext context) {
+  List<Widget> navbarItems(BuildContext context) {
     return [
       DNDManButtonWidget(
         onPressed: () {
@@ -21,6 +21,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> with DNDManPageMi
           icon: Icons.shield_moon,
           text: "Player",
         ),
+        tooltip: "Player tools",
       ),
       DNDManButtonWidget(
         onPressed: () {
@@ -29,6 +30,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> with DNDManPageMi
           icon: Icons.castle,
           text: "Dungeon Master",
         ),
+        tooltip: "Dungeon master tools",
       ),
     ];
   }

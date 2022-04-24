@@ -2,7 +2,7 @@ import 'package:dndman_app/widgets/navbar/navbar.dart';
 import 'package:flutter/material.dart';
 
 mixin DNDManPageMixin {
-  List<Widget> makeButtons(BuildContext context);
+  List<Widget> navbarItems(BuildContext context);
 
   Widget make(BuildContext context);
 
@@ -16,7 +16,7 @@ mixin DNDManPageMixin {
       appBar: PreferredSize(
         preferredSize: const Size(double.infinity, 100),
         child: DNDManNavBar(
-          buttons: makeButtons(context),
+          buttons: navbarItems(context),
         ),
       ),
       drawer: drawer(context),

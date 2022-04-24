@@ -1,4 +1,4 @@
-import 'package:dndman_app/pages/player.dart';
+import 'package:dndman_app/pages/player/player.dart';
 import 'package:dndman_app/pages/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:stockholm/stockholm.dart';

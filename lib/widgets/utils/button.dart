@@ -8,22 +8,40 @@ class DNDManButtonWidget extends StatelessWidget {
   final double? width;
   final double height;
   final EdgeInsets padding;
+  final String? tooltip;
 
-  const DNDManButtonWidget({Key? key, this.width, this.height = 35, this.padding = const EdgeInsets.only(right: 12), required this.onPressed, required this.child}) : super(key: key);
+  const DNDManButtonWidget({Key? key, this.tooltip, this.width, this.height = 35, this.padding = const EdgeInsets.only(right: 12), required this.onPressed, required this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: width,
-      height: height,
-      child: Padding(
-        padding: padding,
-        child: StockholmButton(
-          child: child,
-          onPressed: onPressed,
+    if (tooltip != null) {
+      return SizedBox(
+        width: width,
+        height: height,
+        child: Padding(
+          padding: padding,
+          child: Tooltip(
+            message: tooltip,
+            child: StockholmButton(
+              child: child,
+              onPressed: onPressed,
+            ),
+          ),
         ),
-      ),
-    );
+      );
+    } else {
+      return SizedBox(
+        width: width,
+        height: height,
+        child: Padding(
+          padding: padding,
+          child: StockholmButton(
+            child: child,
+            onPressed: onPressed,
+          ),
+        ),
+      );
+    }
   }
 }
 

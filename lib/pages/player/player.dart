@@ -11,7 +11,8 @@ class PlayerPageWidget extends StatefulWidget {
   _PlayerPageWidgetState createState() => _PlayerPageWidgetState();
 }
 
-class _PlayerPageWidgetState extends State<PlayerPageWidget> with DNDManPageMixin, TickerProviderStateMixin {
+class _PlayerPageWidgetState extends State<PlayerPageWidget>
+    with DNDManPageMixin, TickerProviderStateMixin {
   bool _showDiceRoller = false;
 
   void toggleDiceRoller() {
@@ -21,7 +22,7 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> with DNDManPageMixi
   }
 
   @override
-  List<Widget> makeButtons(BuildContext context) {
+  List<Widget> navbarItems(BuildContext context) {
     return [
       DNDManButtonWidget(
         onPressed: () {
@@ -36,8 +37,8 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> with DNDManPageMixi
           icon: Icons.arrow_back,
           text: "Profile",
         ),
+        tooltip: "Back to profile",
       ),
-
       DNDManButtonWidget(
         onPressed: () {
           toggleDiceRoller();
@@ -46,6 +47,15 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> with DNDManPageMixi
           icon: DNDManIcons.perspectiveDiceOne,
           text: "Dice Roller",
         ),
+        tooltip: "Enable dice rollers",
+      ),
+      DNDManButtonWidget(
+        onPressed: () {},
+        child: const DNDManButtonLabel(
+          icon: Icons.newspaper,
+          text: "Character Creator",
+        ),
+        tooltip: "Character creation",
       ),
     ];
   }
