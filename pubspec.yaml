@@ -47,7 +47,6 @@ flutter:
 
   assets:
     - assets/images/
-    - assets/audio/
 
   fonts:
     - family: DNDManIcons

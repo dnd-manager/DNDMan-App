@@ -1,3 +1,5 @@
+import 'package:dndman_app/pages/auth/signin.dart';
+import 'package:dndman_app/pages/auth/signup.dart';
 import 'package:dndman_app/pages/player/player.dart';
 import 'package:dndman_app/pages/profile.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +26,8 @@ class Application extends StatelessWidget {
           initialRoute: "/profile",
           routes: {
             "/profile": (context) => const ProfilePageWidget(),
+            "/auth/signin": (context) => const SignInPageWidget(),
+            "/auth/signup": (context) => const SignUpPageWidget(),
             "/player": (context) => const PlayerPageWidget(),
           },
           debugShowCheckedModeBanner: false,
