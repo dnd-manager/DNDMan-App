@@ -20,6 +20,7 @@ class Application extends StatelessWidget {
       builder: (ctx) {
         return MaterialApp(
           title: appTitle,
+
           theme: InheritedApplicationState.of(ctx).darkModeEnabled
               ? StockholmThemeData.dark()
               : StockholmThemeData.light(),

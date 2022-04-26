@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TextFieldWidget extends StatelessWidget {
-  static final RegExp validEmail = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+  // ignore: prefer_function_declarations_over_variables
   static final FormFieldValidator<String> isBlank = (val) {
     if (val == null || val.isEmpty) {
       return "Value can not be empty";
@@ -10,13 +10,13 @@ class TextFieldWidget extends StatelessWidget {
   };
 
   final double? width;
-  final double? height;
   final String hintText;
   final EdgeInsets padding;
   final bool password;
   final FormFieldValidator<String>? validator;
+  final TextEditingController? controller;
 
-  const TextFieldWidget({Key? key, this.width, this.height, required this.hintText, this.padding = const EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5), this.password = false, this.validator}) : super(key: key);
+  const TextFieldWidget({Key? key, this.width = 200, this.controller, required this.hintText, this.padding = const EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5), this.password = false, this.validator}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +27,13 @@ class TextFieldWidget extends StatelessWidget {
           padding: padding,
           child: SizedBox(
             width: width,
-            height: height,
             child: TextFormField(
               decoration: InputDecoration(
                 border: const OutlineInputBorder(),
                 labelText: hintText,
+                contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
               ),
+              controller: controller,
               validator: validator,
               obscureText: password,
               enableSuggestions: !password,

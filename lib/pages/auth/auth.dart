@@ -2,8 +2,32 @@ import 'package:dndman_app/widgets/utils/button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-abstract class AuthPageState<T extends StatefulWidget> extends State<T> {
+mixin AuthStateHandler {
+  void handleState(AuthRequestType requestType, Map<String, TextEditingController> textContents) {
+    switch (requestType) {
+      case AuthRequestType.signinInternal:
+        var email = textContents["email"]!.text;
+        var password = textContents["password"]!.text;
+        break;
+      case AuthRequestType.signupInternal:
+        var email = textContents["email"]!.text;
+        var username = textContents["username"]!.text;
+        var password = textContents["password"]!.text;
+        var passwordConfirm = textContents["passwordConfirm"]!.text;
+        break;
+    }
+  }
+}
+
+enum AuthRequestType {
+  signupInternal,
+  signinInternal,
+}
+
+abstract class AuthPageState<T extends StatefulWidget> extends State<T> with AuthStateHandler {
   final String title;
+  final GlobalKey<FormState> _authFormKey = GlobalKey(debugLabel: "auth_form_key");
+  final Map<String, TextEditingController> _textContents = {};
 
   AuthPageState(this.title);
 
@@ -18,7 +42,6 @@ abstract class AuthPageState<T extends StatefulWidget> extends State<T> {
           child: Container(
             constraints: const BoxConstraints(
               minWidth: 300,
-              minHeight: 400,
             ),
             decoration: BoxDecoration(
               color: Theme.of(context).popupMenuTheme.color,
@@ -33,36 +56,47 @@ abstract class AuthPageState<T extends StatefulWidget> extends State<T> {
               ],
               borderRadius: BorderRadius.circular(10),
             ),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 30),
-                  child: Text(
-                    title,
-                    style: GoogleFonts.rakkas(
-                      color: Colors.white,
-                      decoration: TextDecoration.none,
-                    ),
-                    softWrap: true,
-                  ),
-                ),
-                for (var item in makeContent(context))
-                  item,
-                DNDManButtonWidget(
-                  onPressed: () {
-                    // do something with the data
-                  },
-                  child: Text(
-                    title,
-                    style: GoogleFonts.notoSerif(
-                        fontSize: 14
+            child: Form(
+              key: _authFormKey,
+              autovalidateMode: AutovalidateMode.always,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 30),
+                    child: Text(
+                      title,
+                      style: GoogleFonts.rakkas(
+                        color: Colors.white,
+                        decoration: TextDecoration.none,
+                      ),
+                      softWrap: true,
                     ),
                   ),
-                  width: 200,
-                  height: 55,
-                  padding: const EdgeInsets.all(12),
-                ),
-              ],
+                  for (var item in makeContent(context, _textContents))
+                    item,
+                  DNDManButtonWidget(
+                    onPressed: () {
+                      if (_authFormKey.currentState!.validate()) {
+                        handleState(getType(), _textContents);
+                      }
+                    },
+                    child: Text(
+                      title,
+                      style: GoogleFonts.notoSerif(
+                          fontSize: 14
+                      ),
+                    ),
+                    width: 200,
+                    height: 75,
+                    padding: const EdgeInsets.only(
+                      left: 12,
+                      right: 12,
+                      top: 12,
+                      bottom: 30,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -70,5 +104,7 @@ abstract class AuthPageState<T extends StatefulWidget> extends State<T> {
     );
   }
 
-  List<Widget> makeContent(BuildContext context);
+  AuthRequestType getType();
+
+  List<Widget> makeContent(BuildContext context, Map<String, TextEditingController> contents);
 }

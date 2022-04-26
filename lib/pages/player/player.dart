@@ -26,12 +26,10 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget>
     return [
       DNDManButtonWidget(
         onPressed: () {
-          // if page refreshes
-          if (Navigator.canPop(context)) {
-            Navigator.pop(context);
-          } else {
-            Navigator.pushNamed(context, "/profile");
-          }
+          Navigator.pushReplacementNamed(
+              context,
+              "/profile",
+          );
         },
         child: const DNDManButtonLabel(
           icon: Icons.arrow_back,

@@ -15,7 +15,10 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> with DNDManPageMi
     return [
       DNDManButtonWidget(
         onPressed: () {
-          Navigator.pushNamed(context, "/player");
+          Navigator.pushReplacementNamed(
+              context,
+              "/player",
+          );
         },
         child: const DNDManButtonLabel(
           icon: Icons.shield_moon,

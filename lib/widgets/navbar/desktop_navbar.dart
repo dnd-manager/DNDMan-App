@@ -1,11 +1,9 @@
+import 'package:dndman_app/generated/assets.dart';
+import 'package:dndman_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stockholm/stockholm.dart';
-
-import '../../generated/assets.dart';
-import '../../main.dart';
-import '../utils/button.dart';
 
 class DesktopNavbar extends StatelessWidget {
   final List<Widget> buttons;
