@@ -76,7 +76,7 @@ class _DiceState extends State<DiceWidget> {
   }
 
   Future<int> randValue(int i) {
-    return Future.delayed(Duration(milliseconds: i * 10), () => random(1, widget.maxValue));
+    return Future.delayed(Duration(milliseconds: i * 10), () => random(1, widget.maxValue + 1));
   }
 
   static int random(int min, int max) {
