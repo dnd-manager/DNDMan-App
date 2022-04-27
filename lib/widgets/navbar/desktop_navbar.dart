@@ -17,29 +17,33 @@ class DesktopNavbar extends StatelessWidget {
         color: Theme.of(context).backgroundColor,
         boxShadow: stockholmBoxShadow(context),
       ),
-      child: Row(
-        children: [
-          Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: SvgPicture.asset(
-                  Assets.imagesLogo,
-                  width: 60,
+      child: LayoutBuilder(
+        builder: (ctx, constraints) => Row(
+          children: [
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: SvgPicture.asset(
+                    Assets.imagesLogo,
+                    width: constraints.maxWidth/20,
+                  ),
                 ),
-              ),
-              Text(
-                appTitle,
-                style: GoogleFonts.rakkas(fontSize: 40),
-              ),
-            ],
-          ),
-          const Spacer(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: buttons,
-          ),
-        ],
+                Text(
+                  appTitle,
+                  style: GoogleFonts.rakkas(
+                    fontSize: constraints.maxWidth/40,
+                  ),
+                ),
+              ],
+            ),
+            const Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: buttons,
+            ),
+          ],
+        ),
       ),
     );
   }

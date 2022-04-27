@@ -4,6 +4,7 @@ import 'package:dndman_app/main.dart';
 import 'package:dndman_app/pages/core/base.dart';
 import 'package:dndman_app/utils/animation.dart';
 import 'package:dndman_app/widgets/utils/button.dart';
+import 'package:dndman_app/widgets/utils/links.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -106,45 +107,49 @@ class _HomePageState extends State<HomePageWidget> {
         child: _HomePageAppBar(),
       ),
       body: LayoutBuilder(
-        builder: (ctx, constraints) => SingleChildScrollView(
-          child: Stack(
-            children: [
-              Image.asset(
-                Assets.imagesBackgroundPlaceholder,
-                fit: BoxFit.cover,
-                alignment: Alignment.center,
-              ),
-              Center(
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 180,
-                        bottom: 20,
-                      ),
-                      child: Text(
-                        "D&D Manager",
-                        style: GoogleFonts.cinzelDecorative(
-                          fontSize: constraints.maxWidth / 13,
+        builder: (ctx, constraints) => ListView(
+          children: [
+            Stack(
+              children: [
+                Image.asset(
+                  Assets.imagesBackgroundPlaceholder,
+                  fit: BoxFit.cover,
+                  alignment: Alignment.center,
+                ),
+                Center(
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          top: 180,
+                          bottom: 20,
+                        ),
+                        child: Text(
+                          "D&D Manager",
+                          style: GoogleFonts.cinzelDecorative(
+                            fontSize: constraints.maxWidth / 13,
+                          ),
                         ),
                       ),
-                    ),
-                    DNDManButtonWidget(
-                      onPressed: () {
-                        Navigator.pushReplacementNamed(context, "/auth/signup");
-                      },
-                      child: DNDManButtonLabel(
-                        text: "Sign Up To Get Started!",
-                        fontSize: constraints.maxWidth / 70,
+                      DNDManButtonWidget(
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(
+                              context, "/auth/signup");
+                        },
+                        child: DNDManButtonLabel(
+                          text: "Sign Up To Get Started!",
+                          fontSize: constraints.maxWidth / 70,
+                        ),
+                        width: constraints.maxWidth / 4,
+                        height: constraints.maxWidth / 20,
                       ),
-                      width: constraints.maxWidth / 4,
-                      height: constraints.maxWidth / 20,
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            ),
+            const LinksWidget(),
+          ],
         ),
       ),
     );
@@ -170,7 +175,7 @@ class _HomePageAppBar extends StatelessWidget {
                     tag: "home_logo",
                     child: SvgPicture.asset(
                       Assets.imagesLogo,
-                      width: 60,
+                      width: constraints.maxWidth/20,
                     ),
                   ),
                 ),
@@ -179,7 +184,7 @@ class _HomePageAppBar extends StatelessWidget {
                   child: Text(
                     appTitle,
                     style: GoogleFonts.rakkas(
-                      fontSize: 40,
+                      fontSize: constraints.maxWidth/40,
                       decoration: TextDecoration.none,
                       color: Colors.white,
                     ),
@@ -198,9 +203,9 @@ class _HomePageAppBar extends StatelessWidget {
                       "/auth/signin",
                     );
                   },
-                  child: const DNDManButtonLabel(
+                  child: DNDManButtonLabel(
                     text: "Already have an account? Sign in here!",
-                    fontSize: 17,
+                    fontSize: constraints.maxWidth / 75 - 5,
                   ),
                   padding: EdgeInsets.only(right: constraints.maxWidth / 60),
                 ),

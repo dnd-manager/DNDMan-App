@@ -41,7 +41,7 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> with DNDManPageMixi
           toggleDiceRoller();
         },
         child: const DNDManButtonLabel(
-          icon: DNDManIcons.perspectiveDiceOne,
+          icon: DNDManIcons.perspective_dice_one,
           text: "Dice Roller",
         ),
         tooltip: "Enable dice rollers",

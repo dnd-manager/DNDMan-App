@@ -12,10 +12,22 @@
 ///       - asset: fonts/DNDManIcons.ttf
 ///
 /// 
+/// * Linearicons Free, Copyright (C) Linearicons.com
+///         Author:    Perxis
+///         License:   CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+///         Homepage:  https://linearicons.com
 /// * RPG Awesome, Copyright (c) 2014, Daniela Howe
 ///         Author:    Daniela Howe & Ivan Montiel
 ///         License:   SIL (http://scripts.sil.org/OFL)
 ///         Homepage:  http://nagoshiashumari.github.io/Rpg-Awesome/
+/// * Font Awesome 4, Copyright (C) 2016 by Dave Gandy
+///         Author:    Dave Gandy
+///         License:   SIL ()
+///         Homepage:  http://fortawesome.github.com/Font-Awesome/
+/// * Font Awesome 5, Copyright (C) 2016 by Dave Gandy
+///         Author:    Dave Gandy
+///         License:   SIL (https://github.com/FortAwesome/Font-Awesome/blob/master/LICENSE.txt)
+///         Homepage:  http://fortawesome.github.com/Font-Awesome/
 ///
 import 'package:flutter/widgets.dart';
 
@@ -25,5 +37,9 @@ class DNDManIcons {
   static const _kFontFam = 'DNDManIcons';
   static const String? _kFontPkg = null;
 
-  static const IconData perspectiveDiceOne = IconData(0xea5b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData license = IconData(0xe822, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData perspective_dice_one = IconData(0xea5b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData github_circled = IconData(0xf09b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData discord = IconData(0xf392, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData patreon = IconData(0xf3d9, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

@@ -24,44 +24,42 @@ class DNDManButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (tooltip != null) {
-      return SizedBox(
-        width: width,
-        height: height,
-        child: Padding(
-          padding: padding,
-          child: Tooltip(
-            message: tooltip,
-            child: flat
-                ? FlatButton(
-                    child: child,
-                    onPressed: onPressed,
-                  )
-                : StockholmButton(
-                    onPressed: onPressed,
-                    child: child,
-                  ),
-          ),
-        ),
-      );
-    } else {
-      return SizedBox(
-        width: width,
-        height: height,
-        child: Padding(
-          padding: padding,
-          child: flat
-              ? FlatButton(
-                  child: child,
-                  onPressed: onPressed,
-                )
-              : StockholmButton(
-                  onPressed: onPressed,
-                  child: child,
-                ),
-        ),
-      );
-    }
+    return tooltip != null
+        ? SizedBox(
+            width: width,
+            height: height,
+            child: Padding(
+              padding: padding,
+              child: Tooltip(
+                message: tooltip,
+                child: flat
+                    ? FlatButton(
+                        child: child,
+                        onPressed: onPressed,
+                      )
+                    : StockholmButton(
+                        onPressed: onPressed,
+                        child: child,
+                      ),
+              ),
+            ),
+          )
+        : SizedBox(
+            width: width,
+            height: height,
+            child: Padding(
+              padding: padding,
+              child: flat
+                  ? FlatButton(
+                      child: child,
+                      onPressed: onPressed,
+                    )
+                  : StockholmButton(
+                      onPressed: onPressed,
+                      child: child,
+                    ),
+            ),
+          );
   }
 }
 
