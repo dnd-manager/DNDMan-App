@@ -69,12 +69,14 @@ class DNDManButtonLabel extends StatelessWidget {
   final IconData? icon;
   final String text;
   final double fontSize;
+  final TextAlign? textAlign;
 
-  const DNDManButtonLabel({Key? key, this.icon, this.fontSize = 15, required this.text}) : super(key: key);
+  const DNDManButtonLabel({Key? key, this.icon, this.fontSize = 15, this.textAlign, required this.text}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         if (icon != null)
           Padding(
@@ -83,6 +85,7 @@ class DNDManButtonLabel extends StatelessWidget {
           ),
         Text(
           text,
+          textAlign: textAlign,
           style: GoogleFonts.notoSerif(
             fontSize: fontSize,
           ),

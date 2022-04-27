@@ -106,11 +106,41 @@ class _HomePageState extends State<HomePageWidget> {
       ),
       body: LayoutBuilder(
         builder: (ctx, constraints) => SingleChildScrollView(
-          child: Column(
+          child: Stack(
             children: [
               Image.asset(
-                Assets.imagesDndmap,
-                width: constraints.maxWidth,
+                Assets.imagesBackgroundPlaceholder,
+                fit: BoxFit.cover,
+                alignment: Alignment.center,
+              ),
+              Center(
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        top: 180,
+                        bottom: 20,
+                      ),
+                      child: Text(
+                        "D&D Manager",
+                        style: GoogleFonts.cinzelDecorative(
+                          fontSize: constraints.maxWidth/13,
+                        ),
+                      ),
+                    ),
+                    DNDManButtonWidget(
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(context, "/auth/signup");
+                      },
+                      child: DNDManButtonLabel(
+                        text: "Sign Up To Get Started!",
+                        fontSize: constraints.maxWidth/70,
+                      ),
+                      width: constraints.maxWidth/4,
+                      height: constraints.maxWidth/20,
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -126,7 +156,7 @@ class _HomePageAppBar extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) => Container(
         decoration: BoxDecoration(
-          color: Theme.of(context).backgroundColor,
+          color: Colors.black54,
           boxShadow: stockholmBoxShadow(context),
         ),
         child: Row(
@@ -168,20 +198,7 @@ class _HomePageAppBar extends StatelessWidget {
                     );
                   },
                   child: const DNDManButtonLabel(
-                    text: "Sign In With an Account",
-                    fontSize: 17,
-                  ),
-                  padding: EdgeInsets.only(right: constraints.maxWidth / 60),
-                ),
-                DNDManButtonWidget(
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(
-                      context,
-                      "/auth/signup",
-                    );
-                  },
-                  child: const DNDManButtonLabel(
-                    text: "Create an Account",
+                    text: "Already have an account? Sign in here!",
                     fontSize: 17,
                   ),
                   padding: EdgeInsets.only(right: constraints.maxWidth / 60),

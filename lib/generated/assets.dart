@@ -2,7 +2,7 @@
 class Assets {
   Assets._();
 
-  static const String imagesDndmap = 'assets/images/dndmap.png';
+  static const String imagesBackgroundPlaceholder = 'assets/images/background_placeholder.jpg';
   static const String imagesLogo = 'assets/images/logo.svg';
   static const String rivDndmanLogo = 'assets/riv/dndman_logo.riv';
 
