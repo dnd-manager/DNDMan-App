@@ -1,5 +1,5 @@
 import 'package:dndman_app/generated/icons.dart';
-import 'package:dndman_app/pages/base.dart';
+import 'package:dndman_app/pages/core/base.dart';
 import 'package:dndman_app/widgets/utils/button.dart';
 import 'package:dndman_app/widgets/utils/dice.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +11,7 @@ class PlayerPageWidget extends StatefulWidget {
   _PlayerPageWidgetState createState() => _PlayerPageWidgetState();
 }
 
-class _PlayerPageWidgetState extends State<PlayerPageWidget>
-    with DNDManPageMixin, TickerProviderStateMixin {
+class _PlayerPageWidgetState extends State<PlayerPageWidget> with DNDManPageMixin, TickerProviderStateMixin {
   bool _showDiceRoller = false;
 
   void toggleDiceRoller() {

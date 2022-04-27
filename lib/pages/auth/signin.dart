@@ -16,6 +16,14 @@ class _SignInPageState extends AuthPageState<SignInPageWidget> {
 
   _SignInPageState() : super("Sign In");
 
+
+  @override
+  void dispose() {
+    super.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+  }
+
   @override
   List<Widget> makeContent(BuildContext context, Map<String, TextEditingController> content) {
     content.putIfAbsent("email", () => _emailController);

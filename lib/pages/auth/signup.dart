@@ -18,6 +18,16 @@ class _SignUpPageState extends AuthPageState<SignUpPageWidget> {
 
   _SignUpPageState() : super("Sign Up");
 
+
+  @override
+  void dispose() {
+    super.dispose();
+    _emailController.dispose();
+    _usernameController.dispose();
+    _passwordController.dispose();
+    _passwordConfirmController.dispose();
+  }
+
   @override
   List<Widget> makeContent(BuildContext context, Map<String, TextEditingController> content) {
     content.putIfAbsent("email", () => _emailController);

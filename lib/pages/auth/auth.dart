@@ -94,6 +94,7 @@ abstract class AuthPageState<T extends StatefulWidget> extends State<T> with Aut
                       top: 12,
                       bottom: 30,
                     ),
+                    flat: false,
                   ),
                 ],
               ),

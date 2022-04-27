@@ -1,4 +1,4 @@
-import 'package:dndman_app/pages/base.dart';
+import 'package:dndman_app/pages/core/base.dart';
 import 'package:dndman_app/widgets/utils/button.dart';
 import 'package:flutter/material.dart';
 

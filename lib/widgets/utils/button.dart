@@ -9,8 +9,18 @@ class DNDManButtonWidget extends StatelessWidget {
   final double height;
   final EdgeInsets padding;
   final String? tooltip;
+  final bool flat;
 
-  const DNDManButtonWidget({Key? key, this.tooltip, this.width, this.height = 35, this.padding = const EdgeInsets.only(right: 12), required this.onPressed, required this.child}) : super(key: key);
+  const DNDManButtonWidget(
+      {Key? key,
+      this.tooltip,
+      this.width,
+      this.height = 35,
+      this.flat = true,
+      this.padding = const EdgeInsets.only(right: 12),
+      required this.onPressed,
+      required this.child})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +32,15 @@ class DNDManButtonWidget extends StatelessWidget {
           padding: padding,
           child: Tooltip(
             message: tooltip,
-            child: StockholmButton(
-              child: child,
-              onPressed: onPressed,
-            ),
+            child: flat
+                ? FlatButton(
+                    child: child,
+                    onPressed: onPressed,
+                  )
+                : StockholmButton(
+                    onPressed: onPressed,
+                    child: child,
+                  ),
           ),
         ),
       );
@@ -35,9 +50,14 @@ class DNDManButtonWidget extends StatelessWidget {
         height: height,
         child: Padding(
           padding: padding,
-          child: StockholmButton(
+          child: flat
+              ? FlatButton(
             child: child,
             onPressed: onPressed,
+          )
+              : StockholmButton(
+            onPressed: onPressed,
+            child: child,
           ),
         ),
       );
@@ -46,25 +66,28 @@ class DNDManButtonWidget extends StatelessWidget {
 }
 
 class DNDManButtonLabel extends StatelessWidget {
-  final IconData icon;
+  final IconData? icon;
   final String text;
+  final double fontSize;
 
-  const DNDManButtonLabel({Key? key, required this.icon, required this.text}) : super(key: key);
+  const DNDManButtonLabel({Key? key, this.icon, this.fontSize = 15, required this.text}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(right: 8.0),
-          child: Icon(icon),
-        ),
+        if (icon != null)
+          Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: Icon(icon),
+          ),
         Text(
           text,
-          style: GoogleFonts.notoSerif(fontSize: 15),
+          style: GoogleFonts.notoSerif(
+            fontSize: fontSize,
+          ),
         ),
       ],
     );
   }
 }
-
