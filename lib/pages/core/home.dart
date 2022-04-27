@@ -71,7 +71,7 @@ class HomePageStartState extends State<HomePageStartWidget>
                 child: AnimatedTextKit(
                   animatedTexts: [
                     TyperAnimatedText(
-                      "             D&D Manager",
+                      "               D&D Manager",
                       textStyle: GoogleFonts.rakkas(
                         decoration: TextDecoration.none,
                         color: Colors.white,
@@ -100,6 +100,7 @@ class _HomePageState extends State<HomePageWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: PreferredSize(
         preferredSize: const Size(double.infinity, 100),
         child: _HomePageAppBar(),
@@ -124,7 +125,7 @@ class _HomePageState extends State<HomePageWidget> {
                       child: Text(
                         "D&D Manager",
                         style: GoogleFonts.cinzelDecorative(
-                          fontSize: constraints.maxWidth/13,
+                          fontSize: constraints.maxWidth / 13,
                         ),
                       ),
                     ),
@@ -134,10 +135,10 @@ class _HomePageState extends State<HomePageWidget> {
                       },
                       child: DNDManButtonLabel(
                         text: "Sign Up To Get Started!",
-                        fontSize: constraints.maxWidth/70,
+                        fontSize: constraints.maxWidth / 70,
                       ),
-                      width: constraints.maxWidth/4,
-                      height: constraints.maxWidth/20,
+                      width: constraints.maxWidth / 4,
+                      height: constraints.maxWidth / 20,
                     ),
                   ],
                 ),

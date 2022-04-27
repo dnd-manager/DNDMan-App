@@ -52,13 +52,13 @@ class DNDManButtonWidget extends StatelessWidget {
           padding: padding,
           child: flat
               ? FlatButton(
-            child: child,
-            onPressed: onPressed,
-          )
+                  child: child,
+                  onPressed: onPressed,
+                )
               : StockholmButton(
-            onPressed: onPressed,
-            child: child,
-          ),
+                  onPressed: onPressed,
+                  child: child,
+                ),
         ),
       );
     }
@@ -71,7 +71,13 @@ class DNDManButtonLabel extends StatelessWidget {
   final double fontSize;
   final TextAlign? textAlign;
 
-  const DNDManButtonLabel({Key? key, this.icon, this.fontSize = 15, this.textAlign, required this.text}) : super(key: key);
+  const DNDManButtonLabel(
+      {Key? key,
+      this.icon,
+      this.fontSize = 15,
+      this.textAlign,
+      required this.text})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
