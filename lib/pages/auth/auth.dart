@@ -1,9 +1,10 @@
 import 'package:dndman_app/widgets/utils/button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 mixin AuthStateHandler {
-  void handleState(AuthRequestType requestType, Map<String, TextEditingController> textContents) {
+  void handleState(AuthRequestType requestType, Map<String, TextEditingController> textContents) async {
     switch (requestType) {
       case AuthRequestType.signinInternal:
         var email = textContents["email"]!.text;
