@@ -47,7 +47,9 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> with DNDManPageMixi
         tooltip: "Enable dice rollers",
       ),
       DNDManButtonWidget(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushReplacementNamed(context, "/player/character_creator");
+        },
         child: const DNDManButtonLabel(
           icon: Icons.newspaper,
           text: "Character Creator",

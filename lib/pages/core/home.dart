@@ -19,7 +19,7 @@ class HomePageStartWidget extends StatefulWidget {
 }
 
 class HomePageStartState extends State<HomePageStartWidget>
-    with WebStateValidatorMixin {
+    with AppStateValidatorMixin {
   late RiveAnimationController _controller;
 
   @override

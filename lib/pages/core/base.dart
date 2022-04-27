@@ -26,7 +26,7 @@ mixin DNDManPageMixin {
   }
 }
 
-mixin WebStateValidatorMixin {
+mixin AppStateValidatorMixin {
   void checkConnectivity(BuildContext context) {
     Connectivity().checkConnectivity().then(
           (value) {
@@ -35,5 +35,13 @@ mixin WebStateValidatorMixin {
         }
       },
     );
+  }
+
+  void checkLoggedIn() {
+
+  }
+
+  void redirectIfLoggedIn() {
+
   }
 }
