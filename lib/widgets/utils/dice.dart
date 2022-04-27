@@ -59,6 +59,7 @@ class _DiceState extends State<DiceWidget> {
           width: 70,
           height: 35,
           padding: const EdgeInsets.only(top: 10),
+          flat: false,
         ),
       ],
     );
