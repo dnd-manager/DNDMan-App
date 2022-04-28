@@ -9,6 +9,7 @@ class UserCreate with _$UserCreate {
 
   @JsonSerializable(explicitToJson: true)
   const factory UserCreate({
+    required String email,
     required String username,
     required String password,
   }) = _UserCreate;

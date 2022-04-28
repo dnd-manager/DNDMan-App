@@ -5,13 +5,13 @@ import 'package:dndman_app/api/data/user.dart';
 import 'package:dndman_app/api/data/user_create.dart';
 import 'package:http/http.dart' as http;
 
-class APIAccessor {
-  static final APIAccessor instance = APIAccessor();
+class APIClient {
+  static final APIClient instance = APIClient();
   static const String _serverURL = "http://localhost:8080";
 
   Future createUser(UserCreate create) async {
     final http.Response response = await http.post(
-      _getURL("/users/"),
+      _getURL("/users"),
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
       },
@@ -35,6 +35,22 @@ class APIAccessor {
     return User.fromJson(jsonDecode(response.body));
   }
 
+  Future<String> createSession(int userID) async {
+    final http.Response response = await http.post(
+      _getURL("/user_sessions/create/$userID"),
+    );
+
+    final int responseCode = response.statusCode;
+    _handleResponse(responseCode, "create session");
+
+    print(response.body);
+
+    return response.body;
+  }
+
+  Future deleteSession() async {
+
+  }
 
 
   Uri _getURL(String route) {

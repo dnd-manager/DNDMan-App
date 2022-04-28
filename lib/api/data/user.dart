@@ -8,6 +8,7 @@ class User with _$User {
 
   @JsonSerializable(explicitToJson: true)
   const factory User({
+    required String email,
     required String username,
     required int id,
   }) = _User;
