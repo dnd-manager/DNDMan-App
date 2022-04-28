@@ -1,6 +1,8 @@
+import 'package:dndman_app/api/api_acessor.dart';
+import 'package:dndman_app/api/data/user.dart';
+import 'package:dndman_app/api/data/user_create.dart';
 import 'package:dndman_app/widgets/utils/button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 mixin AuthStateHandler {
@@ -14,7 +16,9 @@ mixin AuthStateHandler {
         var email = textContents["email"]!.text;
         var username = textContents["username"]!.text;
         var password = textContents["password"]!.text;
-        var passwordConfirm = textContents["passwordConfirm"]!.text;
+
+        await APIAccessor.instance.createUser(UserCreate(username: username, password: password));
+
         break;
     }
   }

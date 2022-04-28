@@ -14,7 +14,6 @@ class _SignUpPageState extends AuthPageState<SignUpPageWidget> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _passwordConfirmController = TextEditingController();
 
   _SignUpPageState() : super("Sign Up");
 
@@ -25,7 +24,6 @@ class _SignUpPageState extends AuthPageState<SignUpPageWidget> {
     _emailController.dispose();
     _usernameController.dispose();
     _passwordController.dispose();
-    _passwordConfirmController.dispose();
   }
 
   @override
@@ -33,7 +31,6 @@ class _SignUpPageState extends AuthPageState<SignUpPageWidget> {
     content.putIfAbsent("email", () => _emailController);
     content.putIfAbsent("username", () => _usernameController);
     content.putIfAbsent("password", () => _passwordController);
-    content.putIfAbsent("passwordConfirm", () => _passwordConfirmController);
 
     return [
       TextFieldWidget(
@@ -60,8 +57,17 @@ class _SignUpPageState extends AuthPageState<SignUpPageWidget> {
       TextFieldWidget(
         password: true,
         hintText: "Confirm your password",
-        controller: _passwordConfirmController,
-        validator: TextFieldWidget.isBlank,
+        validator: (val) {
+          if (val == null || val.isEmpty) {
+            return "Value can not be empty";
+          }
+
+          if (val != _passwordController.text) {
+            return "2 Passwords entered are not the same";
+          }
+
+          return null;
+        },
       ),
       TextButton(
         onPressed: () {
