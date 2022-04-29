@@ -15,8 +15,19 @@ class TextFieldWidget extends StatelessWidget {
   final bool password;
   final FormFieldValidator<String>? validator;
   final TextEditingController? controller;
+  final InputDecoration? decoration;
 
-  const TextFieldWidget({Key? key, this.width = 200, this.controller, required this.hintText, this.padding = const EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5), this.password = false, this.validator}) : super(key: key);
+  const TextFieldWidget(
+      {Key? key,
+      this.width = 200,
+      this.decoration,
+      this.controller,
+      required this.hintText,
+      this.padding =
+          const EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
+      this.password = false,
+      this.validator})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +39,14 @@ class TextFieldWidget extends StatelessWidget {
           child: SizedBox(
             width: width,
             child: TextFormField(
-              decoration: InputDecoration(
-                border: const OutlineInputBorder(),
-                labelText: hintText,
-                contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-              ),
+              decoration: decoration == null
+                  ? InputDecoration(
+                      border: const OutlineInputBorder(),
+                      labelText: hintText,
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 10),
+                    )
+                  : decoration!,
               controller: controller,
               validator: validator,
               obscureText: password,
