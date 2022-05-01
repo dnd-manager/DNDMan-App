@@ -40,7 +40,6 @@ class CharacterCreatorPageWidget extends StatelessWidget with DNDManPageMixin {
 
 mixin CharacterCreatorPageMixin {
   final GlobalKey<FormState> _pageFormKey = GlobalKey();
-  final Map<String, TextEditingController> _textContents = {};
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +57,9 @@ mixin CharacterCreatorPageMixin {
                   fontSize: constraints.maxWidth / 25,
                 ),
               ),
+              onSubmit: (fields) {
+
+              },
             ),
           ),
         ),

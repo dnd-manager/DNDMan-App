@@ -1,5 +1,10 @@
 import 'package:dndman_app/form_generator/annotations/reflector.dart';
 import 'package:dndman_app/form_generator/generators/base.dart';
+import 'package:dndman_app/form_generator/generators/bool.dart';
+import 'package:dndman_app/form_generator/generators/enum.dart';
+import 'package:dndman_app/form_generator/generators/number.dart';
+import 'package:dndman_app/form_generator/generators/range.dart';
+import 'package:dndman_app/form_generator/generators/string.dart';
 import 'package:dndman_app/main.reflectable.dart';
 import 'package:dndman_app/pages/auth/signin.dart';
 import 'package:dndman_app/pages/auth/signup.dart';
@@ -29,8 +34,16 @@ T typeOf<T>(T type) => type;
 
 void main() {
   initializeReflectable();
+
   reflectables.add(DNDCharacter);
   reflectables.add(TestClass);
+
+  formGeneratorComponents.add(BoolFormGeneratorComponent());
+  formGeneratorComponents.add(EnumFormGeneratorComponent());
+  formGeneratorComponents.add(NumberFormGeneratorComponent());
+  formGeneratorComponents.add(RangeFormGeneratorComponent());
+  formGeneratorComponents.add(StringFormGeneratorComponent());
+
   runApp(const Application());
 }
 
