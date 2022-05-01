@@ -205,9 +205,10 @@ class _HomePageAppBar extends StatelessWidget {
                   },
                   child: DNDManButtonLabel(
                     text: "Already have an account? Sign in here!",
-                    fontSize: constraints.maxWidth / 75 - 5,
+                    fontSize: constraints.maxWidth / 85,
                   ),
-                  padding: EdgeInsets.only(right: constraints.maxWidth / 60),
+                  width: constraints.maxWidth / 3.8,
+                  height: constraints.maxWidth / 35,
                 ),
               ],
             ),

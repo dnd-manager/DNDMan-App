@@ -45,6 +45,7 @@ dependencies:
   json_annotation: ^4.5.0
   http: ^0.13.4
   reflectable: ^3.0.8
+  recase: ^4.0.0
 
 dev_dependencies:
   flutter_test:

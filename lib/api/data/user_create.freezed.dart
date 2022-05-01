@@ -20,8 +20,8 @@ UserCreate _$UserCreateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserCreate {
-  String get username => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  String get username => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +35,7 @@ abstract class $UserCreateCopyWith<$Res> {
   factory $UserCreateCopyWith(
           UserCreate value, $Res Function(UserCreate) then) =
       _$UserCreateCopyWithImpl<$Res>;
-  $Res call({String username, String email, String password});
+  $Res call({String email, String username, String password});
 }
 
 /// @nodoc
@@ -48,18 +48,18 @@ class _$UserCreateCopyWithImpl<$Res> implements $UserCreateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? username = freezed,
     Object? email = freezed,
+    Object? username = freezed,
     Object? password = freezed,
   }) {
     return _then(_value.copyWith(
-      username: username == freezed
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String,
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      username: username == freezed
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String,
       password: password == freezed
           ? _value.password
@@ -75,7 +75,7 @@ abstract class _$UserCreateCopyWith<$Res> implements $UserCreateCopyWith<$Res> {
           _UserCreate value, $Res Function(_UserCreate) then) =
       __$UserCreateCopyWithImpl<$Res>;
   @override
-  $Res call({String username, String email, String password});
+  $Res call({String email, String username, String password});
 }
 
 /// @nodoc
@@ -90,18 +90,18 @@ class __$UserCreateCopyWithImpl<$Res> extends _$UserCreateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? username = freezed,
     Object? email = freezed,
+    Object? username = freezed,
     Object? password = freezed,
   }) {
     return _then(_UserCreate(
-      username: username == freezed
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String,
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      username: username == freezed
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String,
       password: password == freezed
           ? _value.password
@@ -116,21 +116,21 @@ class __$UserCreateCopyWithImpl<$Res> extends _$UserCreateCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$_UserCreate implements _UserCreate {
   const _$_UserCreate(
-      {required this.username, required this.email, required this.password});
+      {required this.email, required this.username, required this.password});
 
   factory _$_UserCreate.fromJson(Map<String, dynamic> json) =>
       _$$_UserCreateFromJson(json);
 
   @override
-  final String username;
-  @override
   final String email;
+  @override
+  final String username;
   @override
   final String password;
 
   @override
   String toString() {
-    return 'UserCreate(username: $username, email: $email, password: $password)';
+    return 'UserCreate(email: $email, username: $username, password: $password)';
   }
 
   @override
@@ -138,8 +138,8 @@ class _$_UserCreate implements _UserCreate {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _UserCreate &&
-            const DeepCollectionEquality().equals(other.username, username) &&
             const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality().equals(other.username, username) &&
             const DeepCollectionEquality().equals(other.password, password));
   }
 
@@ -147,8 +147,8 @@ class _$_UserCreate implements _UserCreate {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(username),
       const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(username),
       const DeepCollectionEquality().hash(password));
 
   @JsonKey(ignore: true)
@@ -164,17 +164,17 @@ class _$_UserCreate implements _UserCreate {
 
 abstract class _UserCreate implements UserCreate {
   const factory _UserCreate(
-      {required final String username,
-      required final String email,
+      {required final String email,
+      required final String username,
       required final String password}) = _$_UserCreate;
 
   factory _UserCreate.fromJson(Map<String, dynamic> json) =
       _$_UserCreate.fromJson;
 
   @override
-  String get username => throw _privateConstructorUsedError;
-  @override
   String get email => throw _privateConstructorUsedError;
+  @override
+  String get username => throw _privateConstructorUsedError;
   @override
   String get password => throw _privateConstructorUsedError;
   @override
