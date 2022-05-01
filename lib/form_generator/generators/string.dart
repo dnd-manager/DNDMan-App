@@ -6,7 +6,7 @@ import 'package:dndman_app/form_generator/generators/base.dart';
 import 'package:flutter/material.dart';
 import 'package:reflectable/mirrors.dart';
 
-class StringFormGeneratorComponent with FormGeneratorComponent {
+class StringFormGeneratorComponent with FormGeneratorComponent<String> {
   @override
   void serialize(Object value, VariableMirror variableMirror, List<Widget> widgets, Map<String, dynamic> fields, FormDecoration? decoration, FormValidator? validator, FormRange? formRange, FormPadding formPadding, List<Object> annotations) {
     widgets.add(createTextField(
@@ -20,18 +20,12 @@ class StringFormGeneratorComponent with FormGeneratorComponent {
   }
 
   @override
-  void deserialize(Map<String, dynamic> fields) {
-    // TODO: implement deserialize
+  void deserialize(Map<String, dynamic> fields, String origSimpleName, dynamic origValue) {
+    fields.putIfAbsent(origSimpleName, () => origValue.text);
   }
 
   @override
-  bool serializationSelector(Object value) {
-    return value is String;
-  }
-
-  @override
-  bool deserializationSelector(value) {
-    // TODO: implement deserializationSelector
-    throw UnimplementedError();
+  bool deserializationSelector(dynamic value) {
+    return value is TextEditingController && double.tryParse(value.text) == null && int.tryParse(value.text) == null;
   }
 }

@@ -36,18 +36,22 @@ class NumberFormGeneratorComponent with FormGeneratorComponent {
   }
 
   @override
-  void deserialize(Map<String, dynamic> fields) {
-    // TODO: implement deserialize
-  }
-
-  @override
   bool serializationSelector(Object value) {
     return value is int || value is double;
   }
 
   @override
   bool deserializationSelector(value) {
-    // TODO: implement deserializationSelector
-    throw UnimplementedError();
+    return (value is int || value is double) || (value is TextEditingController && (double.tryParse(value.text) != null || int.tryParse(value.text) != null));
+  }
+
+  @override
+  void deserialize(Map<String, dynamic> fields, String origSimpleName, dynamic origValue) {
+    if (origValue is TextEditingController) {
+      fields.putIfAbsent(origSimpleName, () => double.tryParse(origValue.text));
+      return;
+    }
+
+    fields.putIfAbsent(origSimpleName, () => origValue);
   }
 }

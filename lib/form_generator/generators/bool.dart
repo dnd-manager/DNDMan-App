@@ -9,7 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:recase/recase.dart';
 import 'package:reflectable/mirrors.dart';
 
-class BoolFormGeneratorComponent with FormGeneratorComponent {
+class BoolFormGeneratorComponent with FormGeneratorComponent<bool> {
   @override
   void serialize(Object value, VariableMirror variableMirror, List<Widget> widgets, Map<String, dynamic> fields, FormDecoration? decoration, FormValidator? validator, FormRange? formRange, FormPadding formPadding, List<Object> annotations) {
     FormBoolSecondary? secondary;
@@ -37,21 +37,5 @@ class BoolFormGeneratorComponent with FormGeneratorComponent {
         ),
       ),
     ));
-  }
-
-  @override
-  void deserialize(Map<String, dynamic> fields) {
-    // TODO: implement deserialize
-  }
-
-  @override
-  bool serializationSelector(Object value) {
-    return value is bool;
-  }
-
-  @override
-  bool deserializationSelector(value) {
-    // TODO: implement deserializationSelector
-    throw UnimplementedError();
   }
 }

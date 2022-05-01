@@ -7,10 +7,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:recase/recase.dart';
 import 'package:reflectable/mirrors.dart';
 
-mixin FormGeneratorComponent {
-  bool serializationSelector(Object value);
+mixin FormGeneratorComponent<T> {
+  bool serializationSelector(Object value) {
+    return value is T;
+  }
 
-  bool deserializationSelector(dynamic value);
+  bool deserializationSelector(dynamic value) {
+    return value is T;
+  }
 
   void serialize(
     Object value,
@@ -24,7 +28,9 @@ mixin FormGeneratorComponent {
     List<Object> annotations,
   );
 
-  void deserialize(Map<String, dynamic> fields);
+  void deserialize(Map<String, dynamic> fields, String origSimpleName, dynamic origValue) {
+    fields.putIfAbsent(origSimpleName, () => origValue);
+  }
 
   @protected
   Widget createTextField(

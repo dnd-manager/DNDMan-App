@@ -9,7 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:recase/recase.dart';
 import 'package:reflectable/mirrors.dart';
 
-class EnumFormGeneratorComponent with FormGeneratorComponent {
+class EnumFormGeneratorComponent with FormGeneratorComponent<Enum> {
   @override
   void serialize(Object value, VariableMirror variableMirror, List<Widget> widgets, Map<String, dynamic> fields, FormDecoration? decoration, FormValidator? validator, FormRange? formRange, FormPadding formPadding, List<Object> annotations) {
     FormEnumOptions? options;
@@ -40,21 +40,5 @@ class EnumFormGeneratorComponent with FormGeneratorComponent {
         decoration: decoration?.decoration,
       ),
     ));
-  }
-
-  @override
-  void deserialize(Map<String, dynamic> fields) {
-    // TODO: implement deserialize
-  }
-
-  @override
-  bool serializationSelector(Object value) {
-    return value is Enum;
-  }
-
-  @override
-  bool deserializationSelector(value) {
-    // TODO: implement deserializationSelector
-    throw UnimplementedError();
   }
 }

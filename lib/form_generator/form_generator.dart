@@ -140,7 +140,7 @@ class GeneratedForm extends StatelessWidget {
       dynamic value = fields[key];
       try {
         var comp = formGeneratorComponents.firstWhere((element) => element.deserializationSelector(value));
-        comp.deserialize(output);
+        comp.deserialize(output, key, value);
       } on StateError {
         output.putIfAbsent(key, () => value);
       }
