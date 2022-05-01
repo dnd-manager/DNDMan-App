@@ -1,0 +1,3 @@
+class FormHidden {
+  const FormHidden();
+}

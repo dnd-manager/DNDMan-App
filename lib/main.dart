@@ -1,3 +1,5 @@
+import 'package:dndman_app/dnd/generator_components/dice_roll.dart';
+import 'package:dndman_app/dnd/races.dart';
 import 'package:dndman_app/form_generator/annotations/reflector.dart';
 import 'package:dndman_app/form_generator/generators/base.dart';
 import 'package:dndman_app/form_generator/generators/bool.dart';
@@ -13,7 +15,7 @@ import 'package:dndman_app/pages/core/no_connection.dart';
 import 'package:dndman_app/pages/player/character_creator.dart';
 import 'package:dndman_app/pages/player/player.dart';
 import 'package:dndman_app/pages/core/profile.dart';
-import 'package:dndman_app/dnd/dnd_character.dart';
+import 'package:dndman_app/dnd/dnd.dart';
 import 'package:flutter/material.dart';
 import 'package:reflectable/mirrors.dart';
 import 'package:stockholm/stockholm.dart';
@@ -36,13 +38,15 @@ void main() {
   initializeReflectable();
 
   reflectables.add(DNDCharacter);
-  reflectables.add(TestClass);
+  reflectables.add(DiceRoll);
+  reflectables.add(Race);
 
   formGeneratorComponents.add(BoolFormGeneratorComponent());
   formGeneratorComponents.add(EnumFormGeneratorComponent());
   formGeneratorComponents.add(NumberFormGeneratorComponent());
   formGeneratorComponents.add(RangeFormGeneratorComponent());
   formGeneratorComponents.add(StringFormGeneratorComponent());
+  formGeneratorComponents.add(DiceRollFormGeneratorComponent());
 
   runApp(const Application());
 }

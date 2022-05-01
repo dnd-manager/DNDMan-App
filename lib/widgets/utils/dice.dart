@@ -6,8 +6,10 @@ import 'package:google_fonts/google_fonts.dart';
 
 class DiceWidget extends StatefulWidget {
   final int maxValue;
+  final int maxTryCount;
+  final Function(int value)? onChanged;
 
-  const DiceWidget({Key? key, required this.maxValue}) : super(key: key);
+  const DiceWidget({Key? key, required this.maxValue, this.maxTryCount = 0, this.onChanged,}) : super(key: key);
 
   @override
   _DiceState createState() => _DiceState();
@@ -15,6 +17,7 @@ class DiceWidget extends StatefulWidget {
 
 class _DiceState extends State<DiceWidget> {
   int _currentValue = 0;
+  int _tryCount = 0;
 
   @override
   void initState() {
@@ -46,20 +49,27 @@ class _DiceState extends State<DiceWidget> {
             height: 70,
           ),
         ),
-        DNDManButtonWidget(
-          onPressed: () {
-            reRollValue();
-          },
-          child: Text(
-            "D" + widget.maxValue.toString(),
-            style: GoogleFonts.notoSans(
-              fontSize: 15,
+        IgnorePointer(
+          ignoring: widget.maxTryCount != 0 && _tryCount >= widget.maxTryCount,
+          child: DNDManButtonWidget(
+            onPressed: () {
+              reRollValue();
+              setState(() {
+                _tryCount++;
+              });
+            },
+            child: Text(
+              "D" + widget.maxValue.toString(),
+              style: GoogleFonts.notoSans(
+                fontSize: 15,
+                color: widget.maxTryCount != 0 && _tryCount >= widget.maxTryCount ? Colors.grey : Colors.white,
+              ),
             ),
+            width: 70,
+            height: 35,
+            padding: const EdgeInsets.only(top: 10),
+            flat: false,
           ),
-          width: 70,
-          height: 35,
-          padding: const EdgeInsets.only(top: 10),
-          flat: false,
         ),
       ],
     );
@@ -67,6 +77,9 @@ class _DiceState extends State<DiceWidget> {
 
   void reRollValue({int i = 0}) {
     if (i >= 20) {
+      if (widget.onChanged != null) {
+        widget.onChanged!(_currentValue);
+      }
       return;
     }
     var num = randValue(i);

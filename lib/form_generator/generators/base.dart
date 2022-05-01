@@ -49,7 +49,7 @@ mixin FormGeneratorComponent<T> {
         decoration: decoration == null
             ? InputDecoration(
                 border: const OutlineInputBorder(),
-                labelText: value.toString().isEmpty
+                labelText: value.toString().isEmpty || value is int || value is double
                     ? variableMirror.simpleName.titleCase
                     : value.toString(),
                 contentPadding: const EdgeInsets.symmetric(

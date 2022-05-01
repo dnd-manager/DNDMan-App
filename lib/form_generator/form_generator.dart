@@ -1,4 +1,5 @@
 import 'package:dndman_app/form_generator/annotations/decoration.dart';
+import 'package:dndman_app/form_generator/annotations/hide.dart';
 import 'package:dndman_app/form_generator/annotations/range.dart';
 import 'package:dndman_app/form_generator/annotations/validator.dart';
 import 'package:dndman_app/form_generator/annotations/padding.dart';
@@ -10,9 +11,9 @@ import 'package:reflectable/mirrors.dart';
 
 class GeneratedForm extends StatelessWidget {
   final dynamic object;
-  final Widget title;
   final String submitButtonText;
   final Function(Map<String, dynamic> fields) onSubmit;
+  final Widget? submitButton;
 
   final GlobalKey<FormState> _formKey = GlobalKey();
   final Map<String, dynamic> fields = {};
@@ -20,9 +21,9 @@ class GeneratedForm extends StatelessWidget {
   GeneratedForm({
     Key? key,
     required this.object,
-    required this.title,
     required this.onSubmit,
     this.submitButtonText = "Submit",
+    this.submitButton,
   }) : super(key: key);
 
   @override
@@ -35,9 +36,8 @@ class GeneratedForm extends StatelessWidget {
       autovalidateMode: AutovalidateMode.always,
       child: Column(
         children: [
-          Padding(padding: const EdgeInsets.only(top: 30), child: title),
           for (var item in _makeContent(context, object)) item,
-          DNDManButtonWidget(
+          submitButton == null ? DNDManButtonWidget(
             onPressed: () {
               if (_formKey.currentState!.validate()) {
                 onSubmit(handleInput(cm));
@@ -56,7 +56,7 @@ class GeneratedForm extends StatelessWidget {
               bottom: 30,
             ),
             flat: false,
-          ),
+          ) : submitButton!,
         ],
       ),
     );
@@ -73,6 +73,13 @@ class GeneratedForm extends StatelessWidget {
       if (variableMirror != null && variableMirror is VariableMirror) {
         var annotations = variableMirror.metadata;
         var value = im.invokeGetter(variableMirror.simpleName);
+
+        try {
+          annotations.firstWhere((element) => element is FormHidden) as FormHidden;
+          continue;
+        } catch (_) {
+        }
+
         if (value != null) {
           FormDecoration? decoration;
           FormValidator? validator;
@@ -80,31 +87,25 @@ class GeneratedForm extends StatelessWidget {
           FormPadding formPadding;
 
           try {
-            decoration =
-                annotations.firstWhere((element) => element is FormDecoration)
-                    as FormDecoration;
+            decoration = annotations.firstWhere((element) => element is FormDecoration) as FormDecoration;
           } on StateError {
             decoration = null;
           }
 
           try {
-            validator =
-                annotations.firstWhere((element) => element is FormValidator)
-                    as FormValidator;
+            validator = annotations.firstWhere((element) => element is FormValidator) as FormValidator;
           } on StateError {
             validator = null;
           }
 
           try {
-            formRange = annotations
-                .firstWhere((element) => element is FormRange) as FormRange;
+            formRange = annotations.firstWhere((element) => element is FormRange) as FormRange;
           } on StateError {
             formRange = null;
           }
 
           try {
-            formPadding = annotations
-                .firstWhere((element) => element is FormPadding) as FormPadding;
+            formPadding = annotations.firstWhere((element) => element is FormPadding) as FormPadding;
           } on StateError {
             formPadding = const FormPadding(EdgeInsets.all(8));
           }
