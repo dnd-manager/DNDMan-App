@@ -8,8 +8,10 @@ class DiceWidget extends StatefulWidget {
   final int maxValue;
   final int maxTryCount;
   final Function(int value)? onChanged;
+  final double? width;
+  final double? height;
 
-  const DiceWidget({Key? key, required this.maxValue, this.maxTryCount = 0, this.onChanged,}) : super(key: key);
+  const DiceWidget({Key? key, required this.maxValue, this.maxTryCount = 0, this.onChanged, this.width, this.height}) : super(key: key);
 
   @override
   _DiceState createState() => _DiceState();
@@ -27,51 +29,53 @@ class _DiceState extends State<DiceWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 8.0),
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Colors.white, width: 2),
+    return LayoutBuilder(
+      builder: (ctx, constraints) => Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: Colors.white, width: 2),
+              ),
+              child: Align(
+                child: Text(
+                  _currentValue.toString(),
+                  style: GoogleFonts.notoSerif(
+                    fontSize: widget.width == null ? constraints.maxWidth / 20 : widget.width! / 2.5,
+                  ),
+                ),
+                alignment: Alignment.center,
+              ),
+              width: widget.width ?? constraints.maxWidth / 7,
+              height: widget.height ?? constraints.maxWidth / 7,
             ),
-            child: Align(
+          ),
+          IgnorePointer(
+            ignoring: widget.maxTryCount != 0 && _tryCount >= widget.maxTryCount,
+            child: DNDManButtonWidget(
+              onPressed: () {
+                reRollValue();
+                setState(() {
+                  _tryCount++;
+                });
+              },
               child: Text(
-                _currentValue.toString(),
-                style: GoogleFonts.notoSerif(
-                  fontSize: 25,
+                "D" + widget.maxValue.toString(),
+                style: GoogleFonts.notoSans(
+                  fontSize: widget.width == null ? constraints.maxWidth / 35 : widget.width! / 5,
+                  color: widget.maxTryCount != 0 && _tryCount >= widget.maxTryCount ? Colors.grey : Colors.white,
                 ),
               ),
-              alignment: Alignment.center,
+              width: widget.width ?? constraints.maxWidth / 7,
+              height: widget.height == null ? constraints.maxWidth / 12 : widget.height! / 2,
+              padding: const EdgeInsets.only(top: 10),
+              flat: false,
             ),
-            width: 70,
-            height: 70,
           ),
-        ),
-        IgnorePointer(
-          ignoring: widget.maxTryCount != 0 && _tryCount >= widget.maxTryCount,
-          child: DNDManButtonWidget(
-            onPressed: () {
-              reRollValue();
-              setState(() {
-                _tryCount++;
-              });
-            },
-            child: Text(
-              "D" + widget.maxValue.toString(),
-              style: GoogleFonts.notoSans(
-                fontSize: 15,
-                color: widget.maxTryCount != 0 && _tryCount >= widget.maxTryCount ? Colors.grey : Colors.white,
-              ),
-            ),
-            width: 70,
-            height: 35,
-            padding: const EdgeInsets.only(top: 10),
-            flat: false,
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

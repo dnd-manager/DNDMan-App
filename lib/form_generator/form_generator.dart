@@ -1,7 +1,6 @@
 import 'package:dndman_app/form_generator/annotations/decoration.dart';
 import 'package:dndman_app/form_generator/annotations/hide.dart';
 import 'package:dndman_app/form_generator/annotations/range.dart';
-import 'package:dndman_app/form_generator/annotations/validator.dart';
 import 'package:dndman_app/form_generator/annotations/padding.dart';
 import 'package:dndman_app/main.dart';
 import 'package:dndman_app/widgets/utils/button.dart';
@@ -82,7 +81,6 @@ class GeneratedForm extends StatelessWidget {
 
         if (value != null) {
           FormDecoration? decoration;
-          FormValidator? validator;
           FormRange? formRange;
           FormPadding formPadding;
 
@@ -90,12 +88,6 @@ class GeneratedForm extends StatelessWidget {
             decoration = annotations.firstWhere((element) => element is FormDecoration) as FormDecoration;
           } on StateError {
             decoration = null;
-          }
-
-          try {
-            validator = annotations.firstWhere((element) => element is FormValidator) as FormValidator;
-          } on StateError {
-            validator = null;
           }
 
           try {
@@ -118,7 +110,6 @@ class GeneratedForm extends StatelessWidget {
               widgets,
               fields,
               decoration,
-              validator,
               formRange,
               formPadding,
               annotations,

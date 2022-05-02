@@ -1,18 +1,28 @@
 import 'package:dndman_app/api/api_client.dart';
-import 'package:dndman_app/api/data/user_create.dart';
+import 'package:dndman_app/api/data/auth/user_create.dart';
+import 'package:dndman_app/api/data/auth/user_signin.dart';
+import 'package:dndman_app/utils/session.dart';
 import 'package:dndman_app/widgets/utils/button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 mixin AuthStateHandler {
-  void handleState(AuthRequestType requestType, Map<String, TextEditingController> textContents) async {
+  void handleState(BuildContext context, AuthRequestType requestType, Map<String, TextEditingController> textContents) async {
     switch (requestType) {
       case AuthRequestType.signinInternal:
         var email = textContents["email"]!.text;
         var password = textContents["password"]!.text;
 
-        
+        final sessionID = await APIClient.instance.signInUser(
+          context,
+          UserSigninRequest(
+            email: email,
+            password: password,
+          ),
+        );
+
+        await SessionManagement.createSession(sessionID);
+        Navigator.pushReplacementNamed(context, "/profile");
 
         break;
       case AuthRequestType.signupInternal:
@@ -20,11 +30,12 @@ mixin AuthStateHandler {
         var username = textContents["username"]!.text;
         var password = textContents["password"]!.text;
 
-        await APIClient.instance.createUser(UserCreate(
+        await APIClient.instance.createUser(context, UserCreate(
           email: email,
           username: username,
           password: password,
         ));
+        Navigator.pushReplacementNamed(context, "/auth/signin");
 
         break;
     }
@@ -89,7 +100,7 @@ abstract class AuthPageState<T extends StatefulWidget> extends State<T> with Aut
                   DNDManButtonWidget(
                     onPressed: () {
                       if (_authFormKey.currentState!.validate()) {
-                        handleState(getType(), _textContents);
+                        handleState(context, getType(), _textContents);
                       }
                     },
                     child: Text(

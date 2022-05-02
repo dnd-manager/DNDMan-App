@@ -1,4 +1,5 @@
-import 'package:dndman_app/dnd/dnd.dart';
+import 'package:dndman_app/api/data/dnd/dnd_enums.dart';
+import 'package:dndman_app/dnd/player/character_creation.dart';
 import 'package:dndman_app/form_generator/form_generator.dart';
 import 'package:dndman_app/pages/core/base.dart';
 import 'package:dndman_app/widgets/utils/button.dart';
@@ -24,11 +25,9 @@ class CharacterCreatorPageWidget extends StatelessWidget with DNDManPageMixin {
               SizedBox(
                 width: constraints.maxWidth / 4,
                 child: GeneratedForm(
-                  object: DNDCharacter(),
+                  object: const FrontCharacterPart1(),
                   onSubmit: (fields) {
-                    final character = DNDCharacter(
-
-                    );
+                    print(fields);
                   },
                 ),
               ),

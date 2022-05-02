@@ -2,7 +2,6 @@ import 'package:dndman_app/form_generator/annotations/decoration.dart';
 import 'package:dndman_app/form_generator/annotations/options.dart';
 import 'package:dndman_app/form_generator/annotations/padding.dart';
 import 'package:dndman_app/form_generator/annotations/range.dart';
-import 'package:dndman_app/form_generator/annotations/validator.dart';
 import 'package:dndman_app/form_generator/generators/base.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,10 +10,10 @@ import 'package:reflectable/mirrors.dart';
 
 class EnumFormGeneratorComponent with FormGeneratorComponent<Enum> {
   @override
-  void serialize(Object value, VariableMirror variableMirror, List<Widget> widgets, Map<String, dynamic> fields, FormDecoration? decoration, FormValidator? validator, FormRange? formRange, FormPadding formPadding, List<Object> annotations) {
-    FormEnumOptions? options;
+  void serialize(Object value, VariableMirror variableMirror, List<Widget> widgets, Map<String, dynamic> fields, FormDecoration? decoration, FormRange? formRange, FormPadding formPadding, List<Object> annotations) {
+    FormOptions? options;
     try {
-      options = annotations.firstWhere((element) => element is FormEnumOptions) as FormEnumOptions;
+      options = annotations.firstWhere((element) => element is FormOptions) as FormOptions;
     } on StateError {
       options = null;
     }

@@ -11,7 +11,8 @@ class PlayerPageWidget extends StatefulWidget {
   _PlayerPageWidgetState createState() => _PlayerPageWidgetState();
 }
 
-class _PlayerPageWidgetState extends State<PlayerPageWidget> with DNDManPageMixin, TickerProviderStateMixin {
+class _PlayerPageWidgetState extends State<PlayerPageWidget>
+    with DNDManPageMixin, TickerProviderStateMixin {
   bool _showDiceRoller = false;
 
   void toggleDiceRoller() {
@@ -26,8 +27,8 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> with DNDManPageMixi
       DNDManButtonWidget(
         onPressed: () {
           Navigator.pushReplacementNamed(
-              context,
-              "/profile",
+            context,
+            "/profile",
           );
         },
         child: const DNDManButtonLabel(
@@ -63,20 +64,40 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> with DNDManPageMixi
   Widget make(BuildContext context) {
     return LayoutBuilder(builder: (ctx, constraints) {
       if (_showDiceRoller) {
-        return ConstrainedBox(
-          constraints: const BoxConstraints(
-            maxWidth: 250,
-            maxHeight: 400,
-          ),
-          child: GridView.count(
-            crossAxisCount: 2,
-            children: const [
-              DiceWidget(maxValue: 20),
-              DiceWidget(maxValue: 12),
-              DiceWidget(maxValue: 10),
-              DiceWidget(maxValue: 8),
-              DiceWidget(maxValue: 6),
-              DiceWidget(maxValue: 4),
+        return SizedBox(
+          width: constraints.maxWidth / 20,
+          child: Column(
+            children: [
+              DiceWidget(
+                maxValue: 20,
+                width: constraints.maxWidth / 25,
+                height: constraints.maxWidth / 25,
+              ),
+              DiceWidget(
+                maxValue: 12,
+                width: constraints.maxWidth / 25,
+                height: constraints.maxWidth / 25,
+              ),
+              DiceWidget(
+                maxValue: 10,
+                width: constraints.maxWidth / 25,
+                height: constraints.maxWidth / 25,
+              ),
+              DiceWidget(
+                maxValue: 8,
+                width: constraints.maxWidth / 25,
+                height: constraints.maxWidth / 25,
+              ),
+              DiceWidget(
+                maxValue: 6,
+                width: constraints.maxWidth / 25,
+                height: constraints.maxWidth / 25,
+              ),
+              DiceWidget(
+                maxValue: 4,
+                width: constraints.maxWidth / 25,
+                height: constraints.maxWidth / 25,
+              ),
             ],
           ),
         );

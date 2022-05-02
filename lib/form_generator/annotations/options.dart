@@ -1,4 +1,4 @@
-class FormEnumOptions {
+class FormOptions {
   final List<dynamic> options;
-  const FormEnumOptions(this.options);
+  const FormOptions(this.options);
 }

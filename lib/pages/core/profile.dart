@@ -1,4 +1,6 @@
+import 'package:dndman_app/api/api_client.dart';
 import 'package:dndman_app/pages/core/base.dart';
+import 'package:dndman_app/utils/session.dart';
 import 'package:dndman_app/widgets/utils/button.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +11,7 @@ class ProfilePageWidget extends StatefulWidget {
   _ProfilePageWidgetState createState() => _ProfilePageWidgetState();
 }
 
-class _ProfilePageWidgetState extends State<ProfilePageWidget> with DNDManPageMixin {
+class _ProfilePageWidgetState extends State<ProfilePageWidget> with DNDManPageMixin, AppStateValidatorMixin {
   @override
   List<Widget> navbarItems(BuildContext context) {
     return [
@@ -40,6 +42,22 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> with DNDManPageMi
 
   @override
   Widget make(BuildContext context) {
-    return Container();
+    checkLoggedIn(context);
+    return Container(
+      child: DNDManButtonWidget(
+        onPressed: () {
+          SessionManagement.getCurrentSessionID().then((value) {
+            APIClient.instance.signOutUser(context, value).then((value) {
+              SessionManagement.deleteSession().then((value) {
+                Navigator.pushReplacementNamed(context, "/");
+              });
+            });
+          });
+        },
+        child: const DNDManButtonLabel(
+          text: "Sign out",
+        ),
+      ),
+    );
   }
 }
