@@ -1,7 +1,6 @@
 import 'package:dndman_app/form_generator/annotations/decoration.dart';
 import 'package:dndman_app/form_generator/annotations/padding.dart';
 import 'package:dndman_app/form_generator/annotations/range.dart';
-import 'package:dndman_app/widgets/utils/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:recase/recase.dart';

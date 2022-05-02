@@ -11,8 +11,7 @@ class PlayerPageWidget extends StatefulWidget {
   _PlayerPageWidgetState createState() => _PlayerPageWidgetState();
 }
 
-class _PlayerPageWidgetState extends State<PlayerPageWidget>
-    with DNDManPageMixin, TickerProviderStateMixin {
+class _PlayerPageWidgetState extends State<PlayerPageWidget> with DNDManPageMixin, TickerProviderStateMixin {
   bool _showDiceRoller = false;
 
   void toggleDiceRoller() {

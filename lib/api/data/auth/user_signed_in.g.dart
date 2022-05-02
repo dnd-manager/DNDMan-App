@@ -9,7 +9,7 @@ part of 'user_signed_in.dart';
 _$_UserSignedIn _$$_UserSignedInFromJson(Map<String, dynamic> json) =>
     _$_UserSignedIn(
       session: json['session'] as String,
-      user: json['user'] as String,
+      user: json['user'] as int,
     );
 
 Map<String, dynamic> _$$_UserSignedInToJson(_$_UserSignedIn instance) =>

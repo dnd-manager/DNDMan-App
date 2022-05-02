@@ -9,7 +9,7 @@ class UserSignedIn with _$UserSignedIn {
   @JsonSerializable(explicitToJson: true)
   const factory UserSignedIn({
     required String session,
-    required String user,
+    required int user,
   }) = _UserSignedIn;
 
   factory UserSignedIn.fromJson(Map<String, dynamic> json) => _$UserSignedInFromJson(json);

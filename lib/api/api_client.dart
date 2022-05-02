@@ -6,17 +6,18 @@ import 'package:dndman_app/api/data/auth/user_create.dart';
 import 'package:dndman_app/api/data/auth/user_signed_in.dart';
 import 'package:dndman_app/api/data/auth/user_signin.dart';
 import 'package:dndman_app/widgets/utils/button.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 
 class APIClient {
   static final APIClient instance = APIClient();
   static const String _serverURL = "http://localhost:8080";
 
+  final Client client = Client();
+
   Future createUser(BuildContext context, UserCreate create) async {
-    final http.Response response = await http.post(
+    final Response response = await client.post(
       _getURL("/users"),
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
@@ -31,7 +32,7 @@ class APIClient {
   }
 
   Future<User> getUser(BuildContext context, int id) async {
-    final http.Response response = await http.get(
+    final Response response = await client.get(
       _getURL("/users/$id"),
     );
 
@@ -42,7 +43,7 @@ class APIClient {
   }
 
   Future<UserSignedIn> signInUser(BuildContext context, UserSigninRequest signinRequest) async {
-    final http.Response response = await http.post(
+    final Response response = await client.post(
       _getURL("/user_sessions/signin"),
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
@@ -59,7 +60,7 @@ class APIClient {
   }
 
   Future signOutUser(BuildContext context, String sessionID) async {
-    final http.Response response = await http.post(
+    final Response response = await client.post(
       _getURL("/user_sessions/delete/$sessionID"),
     );
 

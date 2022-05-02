@@ -14,6 +14,18 @@ class SessionManagement {
     return await sessionManager.get("sessionID");
   }
 
+  static Future<int> getCurrentUserID() async {
+    var sessionManager = SessionManager();
+
+    final hasSession = await sessionManager.containsKey("userID");
+
+    if (!hasSession) {
+      throw Exception("Tried to get current user id but user is not signed in");
+    }
+
+    return await sessionManager.get("userID");
+  }
+
   static Future createSession(UserSignedIn userSignedIn) async {
     var sessionManager = SessionManager();
     final hasSession = await sessionManager.containsKey("sessionID");

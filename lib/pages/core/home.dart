@@ -3,6 +3,7 @@ import 'package:dndman_app/generated/assets.dart';
 import 'package:dndman_app/main.dart';
 import 'package:dndman_app/pages/core/base.dart';
 import 'package:dndman_app/utils/animation.dart';
+import 'package:dndman_app/utils/app_state.dart';
 import 'package:dndman_app/widgets/utils/button.dart';
 import 'package:dndman_app/widgets/utils/links.dart';
 import 'package:flutter/material.dart';
@@ -18,8 +19,7 @@ class HomePageStartWidget extends StatefulWidget {
   State<StatefulWidget> createState() => HomePageStartState();
 }
 
-class HomePageStartState extends State<HomePageStartWidget>
-    with AppStateValidatorMixin {
+class HomePageStartState extends State<HomePageStartWidget> {
   late RiveAnimationController _controller;
 
   @override
@@ -44,8 +44,6 @@ class HomePageStartState extends State<HomePageStartWidget>
 
   @override
   Widget build(BuildContext context) {
-    checkConnectivity(context);
-
     return Container(
         color: Theme.of(context).backgroundColor,
         child: LayoutBuilder(

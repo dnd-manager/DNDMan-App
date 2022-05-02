@@ -21,7 +21,7 @@ UserSignedIn _$UserSignedInFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserSignedIn {
   String get session => throw _privateConstructorUsedError;
-  String get user => throw _privateConstructorUsedError;
+  int get user => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +34,7 @@ abstract class $UserSignedInCopyWith<$Res> {
   factory $UserSignedInCopyWith(
           UserSignedIn value, $Res Function(UserSignedIn) then) =
       _$UserSignedInCopyWithImpl<$Res>;
-  $Res call({String session, String user});
+  $Res call({String session, int user});
 }
 
 /// @nodoc
@@ -58,7 +58,7 @@ class _$UserSignedInCopyWithImpl<$Res> implements $UserSignedInCopyWith<$Res> {
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
     ));
   }
 }
@@ -70,7 +70,7 @@ abstract class _$UserSignedInCopyWith<$Res>
           _UserSignedIn value, $Res Function(_UserSignedIn) then) =
       __$UserSignedInCopyWithImpl<$Res>;
   @override
-  $Res call({String session, String user});
+  $Res call({String session, int user});
 }
 
 /// @nodoc
@@ -96,7 +96,7 @@ class __$UserSignedInCopyWithImpl<$Res> extends _$UserSignedInCopyWithImpl<$Res>
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
     ));
   }
 }
@@ -113,7 +113,7 @@ class _$_UserSignedIn implements _UserSignedIn {
   @override
   final String session;
   @override
-  final String user;
+  final int user;
 
   @override
   String toString() {
@@ -150,7 +150,7 @@ class _$_UserSignedIn implements _UserSignedIn {
 abstract class _UserSignedIn implements UserSignedIn {
   const factory _UserSignedIn(
       {required final String session,
-      required final String user}) = _$_UserSignedIn;
+      required final int user}) = _$_UserSignedIn;
 
   factory _UserSignedIn.fromJson(Map<String, dynamic> json) =
       _$_UserSignedIn.fromJson;
@@ -158,7 +158,7 @@ abstract class _UserSignedIn implements UserSignedIn {
   @override
   String get session => throw _privateConstructorUsedError;
   @override
-  String get user => throw _privateConstructorUsedError;
+  int get user => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$UserSignedInCopyWith<_UserSignedIn> get copyWith =>

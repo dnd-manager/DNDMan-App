@@ -10,11 +10,13 @@ import 'package:dndman_app/form_generator/generators/string.dart';
 import 'package:dndman_app/main.reflectable.dart';
 import 'package:dndman_app/pages/auth/signin.dart';
 import 'package:dndman_app/pages/auth/signup.dart';
+import 'package:dndman_app/pages/core/base.dart';
 import 'package:dndman_app/pages/core/home.dart';
 import 'package:dndman_app/pages/core/no_connection.dart';
 import 'package:dndman_app/pages/player/character_creator.dart';
 import 'package:dndman_app/pages/player/player.dart';
 import 'package:dndman_app/pages/core/profile.dart';
+import 'package:dndman_app/utils/app_state.dart';
 import 'package:flutter/material.dart';
 import 'package:reflectable/mirrors.dart';
 import 'package:stockholm/stockholm.dart';
@@ -54,6 +56,8 @@ class Application extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppStateValidator.checkConnectivity(context);
+
     return MaterialApp(
       title: appTitle,
       theme: StockholmThemeData.dark(),
