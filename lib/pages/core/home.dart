@@ -1,9 +1,8 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:dndman_app/generated/assets.dart';
 import 'package:dndman_app/main.dart';
-import 'package:dndman_app/pages/core/base.dart';
 import 'package:dndman_app/utils/animation.dart';
-import 'package:dndman_app/utils/app_state.dart';
+import 'package:dndman_app/utils/text.dart';
 import 'package:dndman_app/widgets/utils/button.dart';
 import 'package:dndman_app/widgets/utils/links.dart';
 import 'package:flutter/material.dart';
@@ -71,7 +70,7 @@ class HomePageStartState extends State<HomePageStartWidget> {
                   animatedTexts: [
                     TyperAnimatedText(
                       "               D&D Manager",
-                      textStyle: GoogleFonts.rakkas(
+                      textStyle: DNDTextStyle.displayText(
                         decoration: TextDecoration.none,
                         color: Colors.white,
                         fontSize: constraints.maxWidth / 15,
@@ -181,7 +180,7 @@ class _HomePageAppBar extends StatelessWidget {
                   tag: "home_title",
                   child: Text(
                     appTitle,
-                    style: GoogleFonts.rakkas(
+                    style: GoogleFonts.stardosStencil(
                       fontSize: constraints.maxWidth/40,
                       decoration: TextDecoration.none,
                       color: Colors.white,

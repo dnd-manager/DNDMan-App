@@ -2,6 +2,7 @@ import 'package:dndman_app/api/api_client.dart';
 import 'package:dndman_app/api/data/auth/user.dart';
 import 'package:dndman_app/pages/core/base.dart';
 import 'package:dndman_app/utils/session.dart';
+import 'package:dndman_app/utils/text.dart';
 import 'package:dndman_app/widgets/utils/button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -60,7 +61,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> with DNDManPageMi
                           children: [
                             Text(
                               "$username's Profile",
-                              style: GoogleFonts.rakkas(
+                              style: DNDTextStyle.displayText(
                                 fontSize: constraints.maxWidth / 25,
                               ),
                             ),

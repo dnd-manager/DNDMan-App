@@ -2,6 +2,7 @@ import 'package:dndman_app/api/api_client.dart';
 import 'package:dndman_app/api/data/auth/user_create.dart';
 import 'package:dndman_app/api/data/auth/user_signin.dart';
 import 'package:dndman_app/utils/session.dart';
+import 'package:dndman_app/utils/text.dart';
 import 'package:dndman_app/widgets/utils/button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -88,7 +89,7 @@ abstract class AuthPageState<T extends StatefulWidget> extends State<T> with Aut
                     padding: const EdgeInsets.only(top: 30),
                     child: Text(
                       title,
-                      style: GoogleFonts.rakkas(
+                      style: DNDTextStyle.displayText(
                         color: Colors.white,
                         decoration: TextDecoration.none,
                       ),

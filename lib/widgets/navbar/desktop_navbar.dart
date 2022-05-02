@@ -1,5 +1,6 @@
 import 'package:dndman_app/generated/assets.dart';
 import 'package:dndman_app/main.dart';
+import 'package:dndman_app/utils/text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -31,7 +32,7 @@ class DesktopNavbar extends StatelessWidget {
                 ),
                 Text(
                   appTitle,
-                  style: GoogleFonts.rakkas(
+                  style: DNDTextStyle.displayText(
                     fontSize: constraints.maxWidth/40,
                   ),
                 ),
