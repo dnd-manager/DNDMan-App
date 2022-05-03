@@ -43,55 +43,56 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> with DNDManPageMi
 
   @override
   Widget make(BuildContext context) {
-    return FutureBuilder<int>(
-      future: SessionManagement.getCurrentUserID(),
-      builder: (ctx, userIDSnapshot) =>
-      userIDSnapshot.connectionState == ConnectionState.done? FutureBuilder<User>(
-          future: APIClient.instance.getUser(context, userIDSnapshot.data!),
-          builder: (ctx, userSnapshot) {
-            if (userSnapshot.connectionState == ConnectionState.done) {
-              var user = userSnapshot.data!;
-              var username = user.username;
-              return LayoutBuilder(
-                builder: (ctx, constraints) => SizedBox.expand(
-                  child: SingleChildScrollView(
-                    child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              "$username's Profile",
-                              style: DNDTextStyle.displayText(
-                                fontSize: constraints.maxWidth / 25,
-                              ),
-                            ),
-                            DNDManButtonWidget(
-                              onPressed: () {
-                                SessionManagement.getCurrentSessionID().then((
-                                    value) {
-                                  APIClient.instance.signOutUser(context, value)
-                                      .then((value) {
-                                    SessionManagement.deleteSession().then((value) {
-                                      Navigator.pushReplacementNamed(context, "/");
-                                    });
-                                  });
-                                });
-                              },
-                              child: DNDManButtonLabel(
-                                text: "Sign out",
-                                fontSize: constraints.maxWidth/75,
-                              ),
-                              width: constraints.maxWidth/12,
-                              height: constraints.maxWidth/30,
-                            ),
-                          ],
-                        ),
-                  ),
-                ),
-              );
-            }
-            return const Center(child: CircularProgressIndicator());
-          }
-      ) : const Center(child: CircularProgressIndicator()),
-    );
+    // return FutureBuilder<int>(
+    //   future: SessionManagement.getCurrentUserID(),
+    //   builder: (ctx, userIDSnapshot) =>
+    //   userIDSnapshot.connectionState == ConnectionState.done? FutureBuilder<User>(
+    //       future: APIClient.instance.getUser(context, userIDSnapshot.data!),
+    //       builder: (ctx, userSnapshot) {
+    //         if (userSnapshot.connectionState == ConnectionState.done) {
+    //           var user = userSnapshot.data!;
+    //           var username = user.username;
+    //           return LayoutBuilder(
+    //             builder: (ctx, constraints) => SizedBox.expand(
+    //               child: SingleChildScrollView(
+    //                 child: Column(
+    //                       crossAxisAlignment: CrossAxisAlignment.center,
+    //                       children: [
+    //                         Text(
+    //                           "$username's Profile",
+    //                           style: DNDTextStyle.displayText(
+    //                             fontSize: constraints.maxWidth / 25,
+    //                           ),
+    //                         ),
+    //                         DNDManButtonWidget(
+    //                           onPressed: () {
+    //                             SessionManagement.getCurrentSessionID().then((
+    //                                 value) {
+    //                               APIClient.instance.signOutUser(context, value)
+    //                                   .then((value) {
+    //                                 SessionManagement.deleteSession().then((value) {
+    //                                   Navigator.pushReplacementNamed(context, "/");
+    //                                 });
+    //                               });
+    //                             });
+    //                           },
+    //                           child: DNDManButtonLabel(
+    //                             text: "Sign out",
+    //                             fontSize: constraints.maxWidth/75,
+    //                           ),
+    //                           width: constraints.maxWidth/12,
+    //                           height: constraints.maxWidth/30,
+    //                         ),
+    //                       ],
+    //                     ),
+    //               ),
+    //             ),
+    //           );
+    //         }
+    //         return const Center(child: CircularProgressIndicator());
+    //       }
+    //   ) : const Center(child: CircularProgressIndicator()),
+    // );
+    return Container();
   }
 }

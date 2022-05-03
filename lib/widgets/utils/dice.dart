@@ -37,7 +37,9 @@ class _DiceState extends State<DiceWidget> {
             padding: const EdgeInsets.only(top: 8.0),
             child: Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(
+                    widget.width == null ? constraints.maxWidth/ 5 : widget.width! / 5,
+                ),
                 border: Border.all(color: Colors.white, width: 2),
               ),
               child: Align(

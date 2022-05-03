@@ -13,7 +13,7 @@ mixin DNDManPageMixin {
 
   @override
   Widget build(BuildContext context) {
-    AppStateValidator.checkLoggedIn(context);
+    // AppStateValidator.checkLoggedIn(context);
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size(double.infinity, 100),
