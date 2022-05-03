@@ -1,9 +1,12 @@
 import 'package:dndman_app/pages/auth/auth.dart';
+import 'package:dndman_app/pages/auth/signup.dart';
 import 'package:dndman_app/widgets/utils/text_field.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 
 class SignInPageWidget extends StatefulWidget {
+  static const String route = "/auth/signin";
+
   const SignInPageWidget({Key? key}) : super(key: key);
 
   @override
@@ -50,7 +53,7 @@ class _SignInPageState extends AuthPageState<SignInPageWidget> {
         onPressed: () {
           Navigator.pushReplacementNamed(
             context,
-            "/auth/signup",
+            SignUpPageWidget.route,
           );
         },
         child: const Text("Don't have an account? Sign up here!"),

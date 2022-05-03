@@ -1,6 +1,8 @@
 import 'package:dndman_app/api/api_client.dart';
 import 'package:dndman_app/api/data/auth/user_create.dart';
 import 'package:dndman_app/api/data/auth/user_signin.dart';
+import 'package:dndman_app/pages/auth/signin.dart';
+import 'package:dndman_app/pages/core/profile.dart';
 import 'package:dndman_app/utils/session.dart';
 import 'package:dndman_app/utils/text.dart';
 import 'package:dndman_app/widgets/utils/button.dart';
@@ -23,7 +25,7 @@ mixin AuthStateHandler {
         );
 
         await SessionManagement.createSession(sessionID);
-        Navigator.pushReplacementNamed(context, "/profile");
+        Navigator.pushReplacementNamed(context, ProfilePageWidget.route);
 
         break;
       case AuthRequestType.signupInternal:
@@ -36,7 +38,7 @@ mixin AuthStateHandler {
           username: username,
           password: password,
         ));
-        Navigator.pushReplacementNamed(context, "/auth/signin");
+        Navigator.pushReplacementNamed(context, SignInPageWidget.route);
         break;
     }
   }

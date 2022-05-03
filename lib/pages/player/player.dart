@@ -1,10 +1,14 @@
 import 'package:dndman_app/generated/icons.dart';
 import 'package:dndman_app/pages/core/base.dart';
+import 'package:dndman_app/pages/core/profile.dart';
+import 'package:dndman_app/pages/player/character_creator.dart';
 import 'package:dndman_app/widgets/utils/button.dart';
 import 'package:dndman_app/widgets/utils/dice.dart';
 import 'package:flutter/material.dart';
 
 class PlayerPageWidget extends StatefulWidget {
+  static const String route = "/player";
+
   const PlayerPageWidget({Key? key}) : super(key: key);
 
   @override
@@ -27,7 +31,7 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> with DNDManPageMixi
         onPressed: () {
           Navigator.pushReplacementNamed(
             context,
-            "/profile",
+            ProfilePageWidget.route,
           );
         },
         child: const DNDManButtonLabel(
@@ -48,7 +52,7 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> with DNDManPageMixi
       ),
       DNDManButtonWidget(
         onPressed: () {
-          Navigator.pushReplacementNamed(context, "/player/character_creator");
+          Navigator.pushReplacementNamed(context, CharacterCreatorPageWidget.route);
         },
         child: const DNDManButtonLabel(
           icon: Icons.newspaper,

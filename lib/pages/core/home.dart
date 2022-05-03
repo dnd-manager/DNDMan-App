@@ -1,6 +1,8 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:dndman_app/generated/assets.dart';
 import 'package:dndman_app/main.dart';
+import 'package:dndman_app/pages/auth/signin.dart';
+import 'package:dndman_app/pages/auth/signup.dart';
 import 'package:dndman_app/utils/animation.dart';
 import 'package:dndman_app/utils/app_state.dart';
 import 'package:dndman_app/utils/text.dart';
@@ -13,6 +15,8 @@ import 'package:rive/rive.dart';
 import 'package:stockholm/stockholm.dart';
 
 class HomePageStartWidget extends StatefulWidget {
+  static const String route = "/";
+
   const HomePageStartWidget({Key? key}) : super(key: key);
 
   @override
@@ -30,7 +34,7 @@ class HomePageStartState extends State<HomePageStartWidget> {
       autoplay: true,
       onStop: () {
         Future.delayed(const Duration(milliseconds: 2200)).then((value) {
-          Navigator.pushReplacementNamed(context, "/home");
+          Navigator.pushReplacementNamed(context, HomePageWidget.route);
         });
       },
     );
@@ -89,6 +93,8 @@ class HomePageStartState extends State<HomePageStartWidget> {
 }
 
 class HomePageWidget extends StatefulWidget {
+  static const String route = "/home";
+
   const HomePageWidget({Key? key}) : super(key: key);
 
   @override
@@ -132,7 +138,9 @@ class _HomePageState extends State<HomePageWidget> {
                       DNDManButtonWidget(
                         onPressed: () {
                           Navigator.pushReplacementNamed(
-                              context, "/auth/signup");
+                            context,
+                            SignUpPageWidget.route,
+                          );
                         },
                         child: DNDManButtonLabel(
                           text: "Sign Up To Get Started!",
@@ -198,7 +206,7 @@ class _HomePageAppBar extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushReplacementNamed(
                       context,
-                      "/auth/signin",
+                      SignInPageWidget.route,
                     );
                   },
                   child: DNDManButtonLabel(

@@ -2,6 +2,7 @@ import 'package:dndman_app/api/data/dnd/dnd_enums.dart';
 import 'package:dndman_app/dnd/player/character_creation.dart';
 import 'package:dndman_app/form_generator/form_generator.dart';
 import 'package:dndman_app/pages/core/base.dart';
+import 'package:dndman_app/pages/player/player.dart';
 import 'package:dndman_app/utils/text.dart';
 import 'package:dndman_app/utils/text.dart';
 import 'package:dndman_app/utils/text.dart';
@@ -11,6 +12,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CharacterCreatorPageWidget extends StatelessWidget with DNDManPageMixin {
+  static const String route = "/player/character_creator";
+
   CharacterCreatorPageWidget({Key? key}) : super(key: key);
 
   @override
@@ -62,7 +65,10 @@ class CharacterCreatorPageWidget extends StatelessWidget with DNDManPageMixin {
                 actions: [
                   DNDManButtonWidget(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, "/player");
+                      Navigator.pushReplacementNamed(
+                        context,
+                        PlayerPageWidget.route,
+                      );
                     },
                     child: Text(
                       "Confirm",

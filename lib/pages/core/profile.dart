@@ -1,12 +1,17 @@
 import 'package:dndman_app/api/api_client.dart';
 import 'package:dndman_app/api/data/auth/user.dart';
 import 'package:dndman_app/pages/core/base.dart';
+import 'package:dndman_app/pages/core/home.dart';
+import 'package:dndman_app/pages/dm/dm.dart';
+import 'package:dndman_app/pages/player/player.dart';
 import 'package:dndman_app/utils/session.dart';
 import 'package:dndman_app/utils/text.dart';
 import 'package:dndman_app/widgets/utils/button.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePageWidget extends StatefulWidget {
+  static const String route = "/profile";
+
   const ProfilePageWidget({Key? key}) : super(key: key);
 
   @override
@@ -21,7 +26,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> with DNDManPageMi
         onPressed: () {
           Navigator.pushReplacementNamed(
             context,
-            "/player",
+            PlayerPageWidget.route,
           );
         },
         child: const DNDManButtonLabel(
@@ -31,7 +36,12 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> with DNDManPageMi
         tooltip: "Player tools",
       ),
       DNDManButtonWidget(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushReplacementNamed(
+            context,
+            DMPageWidget.route,
+          );
+        },
         child: const DNDManButtonLabel(
           icon: Icons.castle,
           text: "Dungeon Master",
@@ -71,7 +81,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> with DNDManPageMi
     //                               APIClient.instance.signOutUser(context, value)
     //                                   .then((value) {
     //                                 SessionManagement.deleteSession().then((value) {
-    //                                   Navigator.pushReplacementNamed(context, "/");
+    //                                   Navigator.pushReplacementNamed(context, HomePageStartWidget.route);
     //                                 });
     //                               });
     //                             });

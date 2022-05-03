@@ -11,6 +11,7 @@ import 'package:dndman_app/main.reflectable.dart';
 import 'package:dndman_app/pages/auth/signin.dart';
 import 'package:dndman_app/pages/auth/signup.dart';
 import 'package:dndman_app/pages/core/home.dart';
+import 'package:dndman_app/pages/dm/dm.dart';
 import 'package:dndman_app/pages/player/character_creator.dart';
 import 'package:dndman_app/pages/player/player.dart';
 import 'package:dndman_app/pages/core/profile.dart';
@@ -56,15 +57,16 @@ class Application extends StatelessWidget {
     return MaterialApp(
       title: appTitle,
       theme: StockholmThemeData.dark(),
-      initialRoute: "/",
+      initialRoute: HomePageStartWidget.route,
       routes: {
-        "/": (context) => const HomePageStartWidget(),
-        "/home": (context) => const HomePageWidget(),
-        "/auth/signin": (context) => const SignInPageWidget(),
-        "/auth/signup": (context) => const SignUpPageWidget(),
-        "/profile": (context) => const ProfilePageWidget(),
-        "/player": (context) => const PlayerPageWidget(),
-        "/player/character_creator": (context) => CharacterCreatorPageWidget(),
+        HomePageStartWidget.route: (context) => const HomePageStartWidget(),
+        HomePageWidget.route: (context) => const HomePageWidget(),
+        SignInPageWidget.route: (context) => const SignInPageWidget(),
+        SignUpPageWidget.route: (context) => const SignUpPageWidget(),
+        ProfilePageWidget.route: (context) => const ProfilePageWidget(),
+        PlayerPageWidget.route: (context) => const PlayerPageWidget(),
+        CharacterCreatorPageWidget.route: (context) => CharacterCreatorPageWidget(),
+        DMPageWidget.route: (context) => const DMPageWidget(),
       },
       debugShowCheckedModeBanner: false,
     );
