@@ -5,9 +5,9 @@ import 'package:dndman_app/api/data/auth/user.dart';
 import 'package:dndman_app/api/data/auth/user_create.dart';
 import 'package:dndman_app/api/data/auth/user_signed_in.dart';
 import 'package:dndman_app/api/data/auth/user_signin.dart';
+import 'package:dndman_app/utils/text.dart';
 import 'package:dndman_app/widgets/utils/button.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
 
 class APIClient {
@@ -78,31 +78,38 @@ class APIClient {
       case 200:
         break;
       case 401:
-        showDialog(
-          context: context,
-          builder: (BuildContext dialogContext) {
-            return AlertDialog(
-              title: Text(
-                "Password incorrect!",
-                style: GoogleFonts.notoSerif(),
-              ),
-              actions: <Widget>[
-                DNDManButtonWidget(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text(
-                    "OK",
-                    style: GoogleFonts.notoSerif(),
-                  ),
-                ),
-              ],
-            );
-          },
-        );
+        _showAlert(context, "Password incorrect!");
+        break;
+      case 404:
+        _showAlert(context, "User with email is not found!");
         break;
       default:
         throw HttpException("Invalid HTTP Request on $process, response code: $responseCode");
     }
+  }
+
+  void _showAlert(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext dialogContext) {
+        return AlertDialog(
+          title: Text(
+            message,
+            style: DNDTextStyle.normalText(),
+          ),
+          actions: <Widget>[
+            DNDManButtonWidget(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text(
+                "OK",
+                style: DNDTextStyle.normalText(),
+              ),
+            ),
+          ],
+        );
+      },
+    );
   }
 }

@@ -36,7 +36,6 @@ dependencies:
   get_it: ^7.2.0
   rxdart: ^0.27.3
   email_validator: ^2.0.1
-  connectivity: ^3.0.6
   rive: ^0.8.4
   animated_text_kit: ^4.2.1
   flutter_session_manager: ^1.0.3

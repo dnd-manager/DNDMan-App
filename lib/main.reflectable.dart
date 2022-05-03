@@ -5,9 +5,11 @@
 import 'dart:core';
 import 'package:dndman_app/api/data/dnd/dnd_enums.dart' as prefix2;
 import 'package:dndman_app/dnd/player/character_creation.dart' as prefix1;
-import 'package:dndman_app/form_generator/annotations/options.dart' as prefix3;
+import 'package:dndman_app/form_generator/annotations/header.dart' as prefix3;
+import 'package:dndman_app/form_generator/annotations/options.dart' as prefix4;
 import 'package:dndman_app/form_generator/annotations/reflector.dart'
     as prefix0;
+import 'package:dndman_app/form_generator/annotations/space.dart' as prefix5;
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: implementation_imports
@@ -31,14 +33,13 @@ final _data = <r.Reflectable, r.ReflectorData>{
             7,
             0,
             const prefix0.ClassReflector(),
-            const <int>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 27],
+            const <int>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 28],
             const <int>[
-              28,
               29,
               30,
               31,
               32,
-              15,
+              33,
               16,
               17,
               18,
@@ -49,7 +50,8 @@ final _data = <r.Reflectable, r.ReflectorData>{
               23,
               24,
               25,
-              26
+              26,
+              27
             ],
             const <int>[],
             -1,
@@ -63,12 +65,23 @@ final _data = <r.Reflectable, r.ReflectorData>{
                       raceName = "",
                       background = prefix2.DNDCharacterBackgroundTypes.acolyte,
                       alignment = prefix2.DNDCharacterAlignmentTypes.lawfulGood,
-                      strength = const prefix1.FrontDiceRoll(),
-                      dexterity = const prefix1.FrontDiceRoll(),
-                      constitution = const prefix1.FrontDiceRoll(),
-                      intelligence = const prefix1.FrontDiceRoll(),
-                      wisdom = const prefix1.FrontDiceRoll(),
-                      charisma = const prefix1.FrontDiceRoll()}) =>
+                      strength = const prefix1.FrontDiceRoll(
+                          abilityType:
+                              prefix2.DNDCharacterAbilityTypes.strength),
+                      dexterity = const prefix1.FrontDiceRoll(
+                          abilityType:
+                              prefix2.DNDCharacterAbilityTypes.dexterity),
+                      constitution = const prefix1.FrontDiceRoll(
+                          abilityType:
+                              prefix2.DNDCharacterAbilityTypes.constitution),
+                      intelligence = const prefix1.FrontDiceRoll(
+                          abilityType:
+                              prefix2.DNDCharacterAbilityTypes.intelligence),
+                      wisdom = const prefix1.FrontDiceRoll(
+                          abilityType: prefix2.DNDCharacterAbilityTypes.wisdom),
+                      charisma = const prefix1.FrontDiceRoll(
+                          abilityType:
+                              prefix2.DNDCharacterAbilityTypes.charisma)}) =>
                   b
                       ? prefix1.FrontCharacterPart1(
                           alignment: alignment,
@@ -96,17 +109,21 @@ final _data = <r.Reflectable, r.ReflectorData>{
             7,
             1,
             const prefix0.ClassReflector(),
-            const <int>[12, 13, 14, 36, 37],
-            const <int>[28, 29, 30, 31, 32, 33, 34, 35],
+            const <int>[12, 13, 14, 15, 38, 39],
+            const <int>[29, 30, 31, 32, 33, 34, 35, 36, 37],
             const <int>[],
             -1,
             {},
             {},
             {
-              r'': (bool b) => ({max = 20, maxTryCount = 1, value = 20}) => b
-                  ? prefix1.FrontDiceRoll(
-                      max: max, maxTryCount: maxTryCount, value: value)
-                  : null,
+              r'': (bool b) =>
+                  ({max = 20, maxTryCount = 1, value = 20, abilityType}) => b
+                      ? prefix1.FrontDiceRoll(
+                          max: max,
+                          maxTryCount: maxTryCount,
+                          value: value,
+                          abilityType: abilityType)
+                      : null,
               r'copy': (bool b) => (other, value) =>
                   b ? prefix1.FrontDiceRoll.copy(other, value) : null
             },
@@ -117,8 +134,16 @@ final _data = <r.Reflectable, r.ReflectorData>{
             null)
       ],
       <m.DeclarationMirror>[
-        r.VariableMirrorImpl(r'playerName', 33797, 0,
-            const prefix0.ClassReflector(), -1, -1, -1, null, const []),
+        r.VariableMirrorImpl(
+            r'playerName',
+            33797,
+            0,
+            const prefix0.ClassReflector(),
+            -1,
+            -1,
+            -1,
+            null,
+            const <Object>[const prefix3.FormHeader("Basic Information")]),
         r.VariableMirrorImpl(r'characterName', 33797, 0,
             const prefix0.ClassReflector(), -1, -1, -1, null, const []),
         r.VariableMirrorImpl(r'className', 33797, 0,
@@ -127,14 +152,17 @@ final _data = <r.Reflectable, r.ReflectorData>{
             const prefix0.ClassReflector(), -1, -1, -1, null, const []),
         r.VariableMirrorImpl(r'background', 33797, 0,
             const prefix0.ClassReflector(), -1, -1, -1, null, const <Object>[
-          const prefix3.FormOptions(prefix2.DNDCharacterBackgroundTypes.values)
+          const prefix4.FormOptions(prefix2.DNDCharacterBackgroundTypes.values)
         ]),
         r.VariableMirrorImpl(r'alignment', 33797, 0,
             const prefix0.ClassReflector(), -1, -1, -1, null, const <Object>[
-          const prefix3.FormOptions(prefix2.DNDCharacterAlignmentTypes.values)
+          const prefix4.FormOptions(prefix2.DNDCharacterAlignmentTypes.values)
         ]),
         r.VariableMirrorImpl(r'strength', 33797, 0,
-            const prefix0.ClassReflector(), 1, -1, -1, null, const []),
+            const prefix0.ClassReflector(), 1, -1, -1, null, const <Object>[
+          const prefix5.FormSpace(60),
+          const prefix3.FormHeader("Ability Scores")
+        ]),
         r.VariableMirrorImpl(r'dexterity', 33797, 0,
             const prefix0.ClassReflector(), 1, -1, -1, null, const []),
         r.VariableMirrorImpl(r'constitution', 33797, 0,
@@ -151,18 +179,20 @@ final _data = <r.Reflectable, r.ReflectorData>{
             const prefix0.ClassReflector(), -1, -1, -1, null, const []),
         r.VariableMirrorImpl(r'value', 33797, 1, const prefix0.ClassReflector(),
             -1, -1, -1, null, const []),
-        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 0, 15),
-        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 1, 16),
-        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 2, 17),
-        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 3, 18),
-        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 4, 19),
-        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 5, 20),
-        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 6, 21),
-        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 7, 22),
-        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 8, 23),
-        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 9, 24),
-        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 10, 25),
-        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 11, 26),
+        r.VariableMirrorImpl(r'abilityType', 33797, 1,
+            const prefix0.ClassReflector(), -1, -1, -1, null, const []),
+        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 0, 16),
+        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 1, 17),
+        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 2, 18),
+        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 3, 19),
+        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 4, 20),
+        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 5, 21),
+        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 6, 22),
+        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 7, 23),
+        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 8, 24),
+        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 9, 25),
+        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 10, 26),
+        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 11, 27),
         r.MethodMirrorImpl(
             r'',
             128,
@@ -184,19 +214,29 @@ final _data = <r.Reflectable, r.ReflectorData>{
             const <int>[], const prefix0.ClassReflector(), const []),
         r.MethodMirrorImpl(r'runtimeType', 131075, -1, -1, -1, -1, null,
             const <int>[], const prefix0.ClassReflector(), const []),
-        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 12, 33),
-        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 13, 34),
-        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 14, 35),
-        r.MethodMirrorImpl(r'', 128, 1, -1, -1, -1, null,
-            const <int>[14, 15, 16], const prefix0.ClassReflector(), const []),
-        r.MethodMirrorImpl(r'copy', 1, 1, -1, -1, -1, null, const <int>[17, 18],
+        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 12, 34),
+        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 13, 35),
+        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 14, 36),
+        r.ImplicitGetterMirrorImpl(const prefix0.ClassReflector(), 15, 37),
+        r.MethodMirrorImpl(
+            r'',
+            128,
+            1,
+            -1,
+            -1,
+            -1,
+            null,
+            const <int>[14, 15, 16, 17],
+            const prefix0.ClassReflector(),
+            const []),
+        r.MethodMirrorImpl(r'copy', 1, 1, -1, -1, -1, null, const <int>[18, 19],
             const prefix0.ClassReflector(), const [])
       ],
       <m.ParameterMirror>[
         r.ParameterMirrorImpl(
             r'playerName',
             48134,
-            27,
+            28,
             const prefix0.ClassReflector(),
             -1,
             -1,
@@ -208,7 +248,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
         r.ParameterMirrorImpl(
             r'characterName',
             48134,
-            27,
+            28,
             const prefix0.ClassReflector(),
             -1,
             -1,
@@ -220,7 +260,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
         r.ParameterMirrorImpl(
             r'className',
             48134,
-            27,
+            28,
             const prefix0.ClassReflector(),
             -1,
             -1,
@@ -232,7 +272,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
         r.ParameterMirrorImpl(
             r'raceName',
             48134,
-            27,
+            28,
             const prefix0.ClassReflector(),
             -1,
             -1,
@@ -244,7 +284,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
         r.ParameterMirrorImpl(
             r'background',
             48134,
-            27,
+            28,
             const prefix0.ClassReflector(),
             -1,
             -1,
@@ -256,7 +296,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
         r.ParameterMirrorImpl(
             r'alignment',
             48134,
-            27,
+            28,
             const prefix0.ClassReflector(),
             -1,
             -1,
@@ -268,79 +308,85 @@ final _data = <r.Reflectable, r.ReflectorData>{
         r.ParameterMirrorImpl(
             r'strength',
             48134,
-            27,
+            28,
             const prefix0.ClassReflector(),
             1,
             -1,
             -1,
             null,
             const [],
-            const prefix1.FrontDiceRoll(),
+            const prefix1.FrontDiceRoll(
+                abilityType: prefix2.DNDCharacterAbilityTypes.strength),
             #strength),
         r.ParameterMirrorImpl(
             r'dexterity',
             48134,
-            27,
+            28,
             const prefix0.ClassReflector(),
             1,
             -1,
             -1,
             null,
             const [],
-            const prefix1.FrontDiceRoll(),
+            const prefix1.FrontDiceRoll(
+                abilityType: prefix2.DNDCharacterAbilityTypes.dexterity),
             #dexterity),
         r.ParameterMirrorImpl(
             r'constitution',
             48134,
-            27,
+            28,
             const prefix0.ClassReflector(),
             1,
             -1,
             -1,
             null,
             const [],
-            const prefix1.FrontDiceRoll(),
+            const prefix1.FrontDiceRoll(
+                abilityType: prefix2.DNDCharacterAbilityTypes.constitution),
             #constitution),
         r.ParameterMirrorImpl(
             r'intelligence',
             48134,
-            27,
+            28,
             const prefix0.ClassReflector(),
             1,
             -1,
             -1,
             null,
             const [],
-            const prefix1.FrontDiceRoll(),
+            const prefix1.FrontDiceRoll(
+                abilityType: prefix2.DNDCharacterAbilityTypes.intelligence),
             #intelligence),
         r.ParameterMirrorImpl(
             r'wisdom',
             48134,
-            27,
+            28,
             const prefix0.ClassReflector(),
             1,
             -1,
             -1,
             null,
             const [],
-            const prefix1.FrontDiceRoll(),
+            const prefix1.FrontDiceRoll(
+                abilityType: prefix2.DNDCharacterAbilityTypes.wisdom),
             #wisdom),
         r.ParameterMirrorImpl(
             r'charisma',
             48134,
-            27,
+            28,
             const prefix0.ClassReflector(),
             1,
             -1,
             -1,
             null,
             const [],
-            const prefix1.FrontDiceRoll(),
+            const prefix1.FrontDiceRoll(
+                abilityType: prefix2.DNDCharacterAbilityTypes.charisma),
             #charisma),
         r.ParameterMirrorImpl(
             r'other',
             32774,
-            28,
+            29,
             const prefix0.ClassReflector(),
             -1,
             -1,
@@ -352,7 +398,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
         r.ParameterMirrorImpl(
             r'invocation',
             32774,
-            30,
+            31,
             const prefix0.ClassReflector(),
             -1,
             -1,
@@ -361,12 +407,12 @@ final _data = <r.Reflectable, r.ReflectorData>{
             const [],
             null,
             null),
-        r.ParameterMirrorImpl(r'max', 48134, 36, const prefix0.ClassReflector(),
+        r.ParameterMirrorImpl(r'max', 48134, 38, const prefix0.ClassReflector(),
             -1, -1, -1, null, const [], 20, #max),
         r.ParameterMirrorImpl(
             r'maxTryCount',
             48134,
-            36,
+            38,
             const prefix0.ClassReflector(),
             -1,
             -1,
@@ -378,7 +424,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
         r.ParameterMirrorImpl(
             r'value',
             48134,
-            36,
+            38,
             const prefix0.ClassReflector(),
             -1,
             -1,
@@ -388,9 +434,21 @@ final _data = <r.Reflectable, r.ReflectorData>{
             20,
             #value),
         r.ParameterMirrorImpl(
+            r'abilityType',
+            41990,
+            38,
+            const prefix0.ClassReflector(),
+            -1,
+            -1,
+            -1,
+            null,
+            const [],
+            null,
+            #abilityType),
+        r.ParameterMirrorImpl(
             r'other',
             32774,
-            37,
+            39,
             const prefix0.ClassReflector(),
             1,
             -1,
@@ -402,7 +460,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
         r.ParameterMirrorImpl(
             r'value',
             32774,
-            37,
+            39,
             const prefix0.ClassReflector(),
             -1,
             -1,
@@ -434,7 +492,8 @@ final _data = <r.Reflectable, r.ReflectorData>{
         r'charisma': (dynamic instance) => instance.charisma,
         r'max': (dynamic instance) => instance.max,
         r'maxTryCount': (dynamic instance) => instance.maxTryCount,
-        r'value': (dynamic instance) => instance.value
+        r'value': (dynamic instance) => instance.value,
+        r'abilityType': (dynamic instance) => instance.abilityType
       },
       {},
       null,

@@ -3,6 +3,7 @@ import 'package:dndman_app/form_generator/annotations/icon.dart';
 import 'package:dndman_app/form_generator/annotations/padding.dart';
 import 'package:dndman_app/form_generator/annotations/range.dart';
 import 'package:dndman_app/form_generator/generators/base.dart';
+import 'package:dndman_app/utils/text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:recase/recase.dart';
@@ -24,7 +25,7 @@ class BoolFormGeneratorComponent with FormGeneratorComponent<bool> {
         builder: (context, setState) => CheckboxListTile(
           title: Text(
             variableMirror.simpleName.titleCase,
-            style: GoogleFonts.notoSerif(
+            style: DNDTextStyle.normalText(
               fontSize: 16,
             ),
           ),

@@ -1,11 +1,15 @@
 import 'package:dndman_app/form_generator/annotations/decoration.dart';
+import 'package:dndman_app/form_generator/annotations/header.dart';
 import 'package:dndman_app/form_generator/annotations/hide.dart';
 import 'package:dndman_app/form_generator/annotations/range.dart';
 import 'package:dndman_app/form_generator/annotations/padding.dart';
+import 'package:dndman_app/form_generator/annotations/space.dart';
 import 'package:dndman_app/main.dart';
+import 'package:dndman_app/utils/text.dart';
 import 'package:dndman_app/widgets/utils/button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart';
 import 'package:reflectable/mirrors.dart';
 
 class GeneratedForm extends StatelessWidget {
@@ -34,27 +38,30 @@ class GeneratedForm extends StatelessWidget {
       key: _formKey,
       autovalidateMode: AutovalidateMode.always,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           for (var item in _makeContent(context, object)) item,
-          submitButton == null ? DNDManButtonWidget(
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                onSubmit(handleInput(cm));
-              }
-            },
-            child: Text(
-              submitButtonText,
-              style: GoogleFonts.notoSerif(fontSize: 14),
+          submitButton == null ? Center(
+            child: DNDManButtonWidget(
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  onSubmit(handleInput(cm));
+                }
+              },
+              child: Text(
+                submitButtonText,
+                style: DNDTextStyle.normalText(fontSize: 14),
+              ),
+              width: 200,
+              height: 75,
+              padding: const EdgeInsets.only(
+                left: 12,
+                right: 12,
+                top: 12,
+                bottom: 30,
+              ),
+              flat: false,
             ),
-            width: 200,
-            height: 75,
-            padding: const EdgeInsets.only(
-              left: 12,
-              right: 12,
-              top: 12,
-              bottom: 30,
-            ),
-            flat: false,
           ) : submitButton!,
         ],
       ),
@@ -82,7 +89,9 @@ class GeneratedForm extends StatelessWidget {
         if (value != null) {
           FormDecoration? decoration;
           FormRange? formRange;
+          FormSpace? formSpace;
           FormPadding formPadding;
+          Iterable<FormHeader> formHeaders;
 
           try {
             decoration = annotations.firstWhere((element) => element is FormDecoration) as FormDecoration;
@@ -97,9 +106,41 @@ class GeneratedForm extends StatelessWidget {
           }
 
           try {
+            formSpace = annotations.firstWhere((element) => element is FormSpace) as FormSpace;
+          } on StateError {
+            formSpace = null;
+          }
+
+          try {
             formPadding = annotations.firstWhere((element) => element is FormPadding) as FormPadding;
           } on StateError {
             formPadding = const FormPadding(EdgeInsets.all(8));
+          }
+
+          if (formSpace != null) {
+            widgets.add(SizedBox(height: formSpace.height,));
+          }
+
+          formHeaders = annotations.whereType<FormHeader>();
+
+          for (FormHeader header in formHeaders) {
+            widgets.add(LayoutBuilder(
+              builder: (ctx, constraints) => Padding(
+                padding: formPadding.padding
+                    .subtract(EdgeInsets.only(bottom: formPadding.padding.bottom)),
+                child: Text(
+                  header.headerContent,
+                  style: DNDTextStyle.displayText(
+                    fontSize: constraints.maxWidth / 18,
+                  ),
+                ),
+              ),
+            ));
+
+            widgets.add(Divider(
+              indent: formPadding.padding.left,
+              endIndent: formPadding.padding.right,
+            ));
           }
 
           try {

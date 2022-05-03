@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:dndman_app/utils/text.dart';
 import 'package:dndman_app/widgets/utils/button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -42,7 +43,7 @@ class _DiceState extends State<DiceWidget> {
               child: Align(
                 child: Text(
                   _currentValue.toString(),
-                  style: GoogleFonts.notoSerif(
+                  style: DNDTextStyle.normalText(
                     fontSize: widget.width == null ? constraints.maxWidth / 20 : widget.width! / 2.5,
                   ),
                 ),
@@ -63,7 +64,7 @@ class _DiceState extends State<DiceWidget> {
               },
               child: Text(
                 "D" + widget.maxValue.toString(),
-                style: GoogleFonts.notoSans(
+                style: DNDTextStyle.normalText(
                   fontSize: widget.width == null ? constraints.maxWidth / 35 : widget.width! / 5,
                   color: widget.maxTryCount != 0 && _tryCount >= widget.maxTryCount ? Colors.grey : Colors.white,
                 ),

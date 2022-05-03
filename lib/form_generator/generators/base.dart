@@ -1,8 +1,8 @@
 import 'package:dndman_app/form_generator/annotations/decoration.dart';
 import 'package:dndman_app/form_generator/annotations/padding.dart';
 import 'package:dndman_app/form_generator/annotations/range.dart';
+import 'package:dndman_app/utils/text.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:recase/recase.dart';
 import 'package:reflectable/mirrors.dart';
 
@@ -55,7 +55,7 @@ mixin FormGeneratorComponent<T> {
                   vertical: 10,
                   horizontal: 10,
                 ),
-                labelStyle: GoogleFonts.notoSerif(),
+                labelStyle: DNDTextStyle.normalText(),
               )
             : decoration.decoration,
         validator: value is int || value is double ? (val) {
@@ -68,7 +68,7 @@ mixin FormGeneratorComponent<T> {
           return "Value should be a number";
         } : null,
         controller: controller,
-        style: GoogleFonts.notoSerif(),
+        style: DNDTextStyle.normalText(),
       ),
     );
   }

@@ -8,16 +8,11 @@ class SingleAnimation extends OneShotAnimation {
         bool autoplay = true,
         VoidCallback? onStop,
         VoidCallback? onStart,
-      }) : super(animationName, mix: mix, autoplay: autoplay, onStop: onStop, onStart: onStart) {
-    isActiveChanged.addListener(onActiveChanged);
-  }
+      }) : super(animationName, mix: mix, autoplay: autoplay, onStop: onStop, onStart: onStart);
 
   @override
   void onActiveChanged() {
     // Fire any callbacks
-    isActive
-        ? onStart?.call()
-    // onStop can fire while widgets are still drawing
-        : WidgetsBinding.instance?.addPostFrameCallback((_) => onStop?.call());
+    isActive ? onStart?.call() : WidgetsBinding.instance?.addPostFrameCallback((_) => onStop?.call());
   }
 }

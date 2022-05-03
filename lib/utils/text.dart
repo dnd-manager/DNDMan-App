@@ -69,7 +69,7 @@ class DNDTextStyle {
     TextDecorationStyle? decorationStyle,
     double? decorationThickness,
   }) {
-    return GoogleFonts.stardosStencil(
+    return GoogleFonts.rakkas(
       textStyle: textStyle,
       color: color,
       backgroundColor: backgroundColor,

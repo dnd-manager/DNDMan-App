@@ -2,6 +2,10 @@ import 'package:dndman_app/api/data/dnd/dnd_enums.dart';
 import 'package:dndman_app/dnd/player/character_creation.dart';
 import 'package:dndman_app/form_generator/form_generator.dart';
 import 'package:dndman_app/pages/core/base.dart';
+import 'package:dndman_app/utils/text.dart';
+import 'package:dndman_app/utils/text.dart';
+import 'package:dndman_app/utils/text.dart';
+import 'package:dndman_app/utils/text.dart';
 import 'package:dndman_app/widgets/utils/button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -49,11 +53,11 @@ class CharacterCreatorPageWidget extends StatelessWidget with DNDManPageMixin {
               return AlertDialog(
                 title: Text(
                   "Are you sure?",
-                  style: GoogleFonts.notoSerif(),
+                  style: DNDTextStyle.normalText(),
                 ),
                 content: Text(
                   "You will lose your progress if you leave",
-                  style: GoogleFonts.notoSerif(),
+                  style: DNDTextStyle.normalText(),
                 ),
                 actions: [
                   DNDManButtonWidget(
@@ -62,7 +66,7 @@ class CharacterCreatorPageWidget extends StatelessWidget with DNDManPageMixin {
                     },
                     child: Text(
                       "Confirm",
-                      style: GoogleFonts.notoSerif(),
+                      style: DNDTextStyle.normalText(),
                     ),
                   ),
                   DNDManButtonWidget(
@@ -71,7 +75,7 @@ class CharacterCreatorPageWidget extends StatelessWidget with DNDManPageMixin {
                     },
                     child: Text(
                       "Cancel",
-                      style: GoogleFonts.notoSerif(),
+                      style: DNDTextStyle.normalText(),
                     ),
                   ),
                 ],

@@ -37,7 +37,6 @@ mixin AuthStateHandler {
           password: password,
         ));
         Navigator.pushReplacementNamed(context, "/auth/signin");
-
         break;
     }
   }
@@ -106,7 +105,7 @@ abstract class AuthPageState<T extends StatefulWidget> extends State<T> with Aut
                     },
                     child: Text(
                       title,
-                      style: GoogleFonts.notoSerif(
+                      style: DNDTextStyle.normalText(
                           fontSize: 14
                       ),
                     ),

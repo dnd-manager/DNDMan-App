@@ -1,3 +1,4 @@
+import 'package:dndman_app/utils/text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stockholm/stockholm.dart';
@@ -90,7 +91,7 @@ class DNDManButtonLabel extends StatelessWidget {
         Text(
           text,
           textAlign: textAlign,
-          style: GoogleFonts.notoSerif(
+          style: DNDTextStyle.normalText(
             fontSize: fontSize,
           ),
         ),
