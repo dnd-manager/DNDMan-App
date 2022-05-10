@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:dndman_app/api/data/auth/user.dart';
-import 'package:dndman_app/api/data/auth/user_create.dart';
-import 'package:dndman_app/api/data/auth/user_signed_in.dart';
-import 'package:dndman_app/api/data/auth/user_signin.dart';
+import 'package:dndman_app/api/dndman/data/auth/user_create.dart';
+import 'package:dndman_app/api/dndman/data/auth/user_signin.dart';
+import 'package:dndman_app/api/dndman/data/auth/user_signed_in.dart';
+import 'package:dndman_app/api/dndman/data/auth/user.dart';
 import 'package:dndman_app/utils/text.dart';
 import 'package:dndman_app/widgets/utils/button.dart';
 import 'package:flutter/material.dart';

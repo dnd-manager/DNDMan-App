@@ -3,7 +3,7 @@
 // @dart = 2.12
 
 import 'dart:core';
-import 'package:dndman_app/api/data/dnd/dnd_enums.dart' as prefix2;
+import 'package:dndman_app/api/dndman/data/dnd/dnd_enums.dart' as prefix2;
 import 'package:dndman_app/dnd/player/character_creation.dart' as prefix1;
 import 'package:dndman_app/form_generator/annotations/header.dart' as prefix3;
 import 'package:dndman_app/form_generator/annotations/options.dart' as prefix4;

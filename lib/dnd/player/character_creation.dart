@@ -1,12 +1,8 @@
-import 'package:dndman_app/api/data/dnd/dnd_enums.dart';
-import 'package:dndman_app/form_generator/annotations/constant.dart';
+import 'package:dndman_app/api/dndman/data/dnd/dnd_enums.dart';
 import 'package:dndman_app/form_generator/annotations/header.dart';
 import 'package:dndman_app/form_generator/annotations/options.dart';
-import 'package:dndman_app/form_generator/annotations/range.dart';
 import 'package:dndman_app/form_generator/annotations/reflector.dart';
 import 'package:dndman_app/form_generator/annotations/space.dart';
-import 'package:dndman_app/utils/text.dart';
-import 'package:flutter/material.dart';
 
 @reflector
 class FrontCharacterPart1 {
