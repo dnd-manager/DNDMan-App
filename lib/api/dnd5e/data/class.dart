@@ -1,6 +1,8 @@
 import 'package:dndman_app/api/dnd5e/data/equipment.dart';
 import 'package:dndman_app/api/dnd5e/data/index_object.dart';
 import 'package:dndman_app/api/dnd5e/data/choice.dart';
+import 'package:dndman_app/api/dnd5e/data/multiclass.dart';
+import 'package:dndman_app/api/dnd5e/data/spell_casting.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'class.freezed.dart';
@@ -20,7 +22,10 @@ class Class with _$Class {
     required List<Equipment> starting_equipment,
     required List<Choice<Equipment>> starting_equipment_options,
     required String class_levels,
-    required 
+    required MultiClass multi_classing,
+    required List<IndexObject> subclasses,
+    required SpellCasting spellcasting,
+    required String spells,
     required String url,
   }) = _Class;
 

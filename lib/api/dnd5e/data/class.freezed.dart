@@ -31,6 +31,10 @@ mixin _$Class {
   List<Choice<Equipment>> get starting_equipment_options =>
       throw _privateConstructorUsedError;
   String get class_levels => throw _privateConstructorUsedError;
+  MultiClass get multi_classing => throw _privateConstructorUsedError;
+  List<IndexObject> get subclasses => throw _privateConstructorUsedError;
+  SpellCasting get spellcasting => throw _privateConstructorUsedError;
+  String get spells => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -52,7 +56,14 @@ abstract class $ClassCopyWith<$Res> {
       List<Equipment> starting_equipment,
       List<Choice<Equipment>> starting_equipment_options,
       String class_levels,
+      MultiClass multi_classing,
+      List<IndexObject> subclasses,
+      SpellCasting spellcasting,
+      String spells,
       String url});
+
+  $MultiClassCopyWith<$Res> get multi_classing;
+  $SpellCastingCopyWith<$Res> get spellcasting;
 }
 
 /// @nodoc
@@ -74,6 +85,10 @@ class _$ClassCopyWithImpl<$Res> implements $ClassCopyWith<$Res> {
     Object? starting_equipment = freezed,
     Object? starting_equipment_options = freezed,
     Object? class_levels = freezed,
+    Object? multi_classing = freezed,
+    Object? subclasses = freezed,
+    Object? spellcasting = freezed,
+    Object? spells = freezed,
     Object? url = freezed,
   }) {
     return _then(_value.copyWith(
@@ -113,11 +128,41 @@ class _$ClassCopyWithImpl<$Res> implements $ClassCopyWith<$Res> {
           ? _value.class_levels
           : class_levels // ignore: cast_nullable_to_non_nullable
               as String,
+      multi_classing: multi_classing == freezed
+          ? _value.multi_classing
+          : multi_classing // ignore: cast_nullable_to_non_nullable
+              as MultiClass,
+      subclasses: subclasses == freezed
+          ? _value.subclasses
+          : subclasses // ignore: cast_nullable_to_non_nullable
+              as List<IndexObject>,
+      spellcasting: spellcasting == freezed
+          ? _value.spellcasting
+          : spellcasting // ignore: cast_nullable_to_non_nullable
+              as SpellCasting,
+      spells: spells == freezed
+          ? _value.spells
+          : spells // ignore: cast_nullable_to_non_nullable
+              as String,
       url: url == freezed
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
     ));
+  }
+
+  @override
+  $MultiClassCopyWith<$Res> get multi_classing {
+    return $MultiClassCopyWith<$Res>(_value.multi_classing, (value) {
+      return _then(_value.copyWith(multi_classing: value));
+    });
+  }
+
+  @override
+  $SpellCastingCopyWith<$Res> get spellcasting {
+    return $SpellCastingCopyWith<$Res>(_value.spellcasting, (value) {
+      return _then(_value.copyWith(spellcasting: value));
+    });
   }
 }
 
@@ -136,7 +181,16 @@ abstract class _$ClassCopyWith<$Res> implements $ClassCopyWith<$Res> {
       List<Equipment> starting_equipment,
       List<Choice<Equipment>> starting_equipment_options,
       String class_levels,
+      MultiClass multi_classing,
+      List<IndexObject> subclasses,
+      SpellCasting spellcasting,
+      String spells,
       String url});
+
+  @override
+  $MultiClassCopyWith<$Res> get multi_classing;
+  @override
+  $SpellCastingCopyWith<$Res> get spellcasting;
 }
 
 /// @nodoc
@@ -159,6 +213,10 @@ class __$ClassCopyWithImpl<$Res> extends _$ClassCopyWithImpl<$Res>
     Object? starting_equipment = freezed,
     Object? starting_equipment_options = freezed,
     Object? class_levels = freezed,
+    Object? multi_classing = freezed,
+    Object? subclasses = freezed,
+    Object? spellcasting = freezed,
+    Object? spells = freezed,
     Object? url = freezed,
   }) {
     return _then(_Class(
@@ -198,6 +256,22 @@ class __$ClassCopyWithImpl<$Res> extends _$ClassCopyWithImpl<$Res>
           ? _value.class_levels
           : class_levels // ignore: cast_nullable_to_non_nullable
               as String,
+      multi_classing: multi_classing == freezed
+          ? _value.multi_classing
+          : multi_classing // ignore: cast_nullable_to_non_nullable
+              as MultiClass,
+      subclasses: subclasses == freezed
+          ? _value.subclasses
+          : subclasses // ignore: cast_nullable_to_non_nullable
+              as List<IndexObject>,
+      spellcasting: spellcasting == freezed
+          ? _value.spellcasting
+          : spellcasting // ignore: cast_nullable_to_non_nullable
+              as SpellCasting,
+      spells: spells == freezed
+          ? _value.spells
+          : spells // ignore: cast_nullable_to_non_nullable
+              as String,
       url: url == freezed
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -220,12 +294,17 @@ class _$_Class implements _Class {
       required final List<Equipment> starting_equipment,
       required final List<Choice<Equipment>> starting_equipment_options,
       required this.class_levels,
+      required this.multi_classing,
+      required final List<IndexObject> subclasses,
+      required this.spellcasting,
+      required this.spells,
       required this.url})
       : _proficiency_choices = proficiency_choices,
         _proficiencies = proficiencies,
         _saving_throws = saving_throws,
         _starting_equipment = starting_equipment,
-        _starting_equipment_options = starting_equipment_options;
+        _starting_equipment_options = starting_equipment_options,
+        _subclasses = subclasses;
 
   factory _$_Class.fromJson(Map<String, dynamic> json) =>
       _$$_ClassFromJson(json);
@@ -274,11 +353,24 @@ class _$_Class implements _Class {
   @override
   final String class_levels;
   @override
+  final MultiClass multi_classing;
+  final List<IndexObject> _subclasses;
+  @override
+  List<IndexObject> get subclasses {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_subclasses);
+  }
+
+  @override
+  final SpellCasting spellcasting;
+  @override
+  final String spells;
+  @override
   final String url;
 
   @override
   String toString() {
-    return 'Class(index: $index, name: $name, hit_die: $hit_die, proficiency_choices: $proficiency_choices, proficiencies: $proficiencies, saving_throws: $saving_throws, starting_equipment: $starting_equipment, starting_equipment_options: $starting_equipment_options, class_levels: $class_levels, url: $url)';
+    return 'Class(index: $index, name: $name, hit_die: $hit_die, proficiency_choices: $proficiency_choices, proficiencies: $proficiencies, saving_throws: $saving_throws, starting_equipment: $starting_equipment, starting_equipment_options: $starting_equipment_options, class_levels: $class_levels, multi_classing: $multi_classing, subclasses: $subclasses, spellcasting: $spellcasting, spells: $spells, url: $url)';
   }
 
   @override
@@ -301,6 +393,13 @@ class _$_Class implements _Class {
                 other.starting_equipment_options, starting_equipment_options) &&
             const DeepCollectionEquality()
                 .equals(other.class_levels, class_levels) &&
+            const DeepCollectionEquality()
+                .equals(other.multi_classing, multi_classing) &&
+            const DeepCollectionEquality()
+                .equals(other.subclasses, subclasses) &&
+            const DeepCollectionEquality()
+                .equals(other.spellcasting, spellcasting) &&
+            const DeepCollectionEquality().equals(other.spells, spells) &&
             const DeepCollectionEquality().equals(other.url, url));
   }
 
@@ -317,6 +416,10 @@ class _$_Class implements _Class {
       const DeepCollectionEquality().hash(starting_equipment),
       const DeepCollectionEquality().hash(starting_equipment_options),
       const DeepCollectionEquality().hash(class_levels),
+      const DeepCollectionEquality().hash(multi_classing),
+      const DeepCollectionEquality().hash(subclasses),
+      const DeepCollectionEquality().hash(spellcasting),
+      const DeepCollectionEquality().hash(spells),
       const DeepCollectionEquality().hash(url));
 
   @JsonKey(ignore: true)
@@ -341,6 +444,10 @@ abstract class _Class implements Class {
       required final List<Equipment> starting_equipment,
       required final List<Choice<Equipment>> starting_equipment_options,
       required final String class_levels,
+      required final MultiClass multi_classing,
+      required final List<IndexObject> subclasses,
+      required final SpellCasting spellcasting,
+      required final String spells,
       required final String url}) = _$_Class;
 
   factory _Class.fromJson(Map<String, dynamic> json) = _$_Class.fromJson;
@@ -365,6 +472,14 @@ abstract class _Class implements Class {
       throw _privateConstructorUsedError;
   @override
   String get class_levels => throw _privateConstructorUsedError;
+  @override
+  MultiClass get multi_classing => throw _privateConstructorUsedError;
+  @override
+  List<IndexObject> get subclasses => throw _privateConstructorUsedError;
+  @override
+  SpellCasting get spellcasting => throw _privateConstructorUsedError;
+  @override
+  String get spells => throw _privateConstructorUsedError;
   @override
   String get url => throw _privateConstructorUsedError;
   @override

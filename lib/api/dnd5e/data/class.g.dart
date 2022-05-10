@@ -27,6 +27,14 @@ _$_Class _$$_ClassFromJson(Map<String, dynamic> json) => _$_Class(
               .map((e) => Choice<Equipment>.fromJson(e as Map<String, dynamic>))
               .toList(),
       class_levels: json['class_levels'] as String,
+      multi_classing:
+          MultiClass.fromJson(json['multi_classing'] as Map<String, dynamic>),
+      subclasses: (json['subclasses'] as List<dynamic>)
+          .map((e) => IndexObject.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      spellcasting:
+          SpellCasting.fromJson(json['spellcasting'] as Map<String, dynamic>),
+      spells: json['spells'] as String,
       url: json['url'] as String,
     );
 
@@ -43,5 +51,9 @@ Map<String, dynamic> _$$_ClassToJson(_$_Class instance) => <String, dynamic>{
       'starting_equipment_options':
           instance.starting_equipment_options.map((e) => e.toJson()).toList(),
       'class_levels': instance.class_levels,
+      'multi_classing': instance.multi_classing.toJson(),
+      'subclasses': instance.subclasses.map((e) => e.toJson()).toList(),
+      'spellcasting': instance.spellcasting.toJson(),
+      'spells': instance.spells,
       'url': instance.url,
     };

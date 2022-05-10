@@ -1,4 +1,6 @@
+import 'package:dndman_app/api/dnd5e/data/choice.dart';
 import 'package:dndman_app/api/dnd5e/data/index_object.dart';
+import 'package:dndman_app/api/dnd5e/data/prerequisite.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'multiclass.freezed.dart';
@@ -9,8 +11,9 @@ class MultiClass with _$MultiClass {
 
   @JsonSerializable(explicitToJson: true)
   const factory MultiClass({
-    required IndexObject ability_score,
-    required int bonus,
+    required List<Prerequisite> prerequisites,
+    required List<IndexObject> proficiencies,
+    required List<Choice<IndexObject>> proficiency_choices,
   }) = _MultiClass;
 
   factory MultiClass.fromJson(Map<String, dynamic> json) => _$MultiClassFromJson(json);

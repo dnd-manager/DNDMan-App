@@ -1,3 +1,5 @@
+import 'package:dndman_app/api/dnd5e/data/race.dart';
+import 'package:dndman_app/api/dnd5e/dnd_api_client.dart';
 import 'package:dndman_app/dnd/player/character_creation.dart';
 import 'package:dndman_app/form_generator/form_generator.dart';
 import 'package:dndman_app/pages/core/base.dart';
@@ -7,14 +9,25 @@ import 'package:dndman_app/widgets/utils/button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CharacterCreatorPage1RaceSelectionWidget extends StatelessWidget with DNDManPageMixin {
+class CharacterCreatorPage1RaceSelectionWidget extends StatelessWidget
+    with DNDManPageMixin {
   static const String route = "/player/character_creator/1";
 
   const CharacterCreatorPage1RaceSelectionWidget({Key? key}) : super(key: key);
 
   @override
   Widget make(BuildContext context) {
-    return Container();
+    return FutureBuilder<List<Race>>(
+      future: DNDAPIClient.instance.getRaces(),
+      builder: (ctx, userIDSnapshot) {
+        if (userIDSnapshot.connectionState == ConnectionState.done) {
+          print(userIDSnapshot.data!);
+          return Container();
+        } else {
+          return Container();
+        }
+      }
+    );
   }
 
   @override
@@ -33,7 +46,8 @@ class CharacterCreatorPage1RaceSelectionWidget extends StatelessWidget with DNDM
   }
 }
 
-class CharacterCreatorPage2ClassSelectionWidget extends StatelessWidget with DNDManPageMixin {
+class CharacterCreatorPage2ClassSelectionWidget extends StatelessWidget
+    with DNDManPageMixin {
   static const String route = "/player/character_creator/2";
 
   const CharacterCreatorPage2ClassSelectionWidget({Key? key}) : super(key: key);
@@ -58,7 +72,6 @@ class CharacterCreatorPage2ClassSelectionWidget extends StatelessWidget with DND
     ];
   }
 }
-
 
 class CharacterCreatorPage3Widget extends StatelessWidget with DNDManPageMixin {
   static const String route = "/player/character_creator/3";
@@ -99,7 +112,8 @@ class CharacterCreatorPage3Widget extends StatelessWidget with DNDManPageMixin {
     return [
       DNDManButtonWidget(
         onPressed: () {
-          _showWarning(context, CharacterCreatorPage2ClassSelectionWidget.route);
+          _showWarning(
+              context, CharacterCreatorPage2ClassSelectionWidget.route);
         },
         child: const DNDManButtonLabel(
           text: 'Last Step',
