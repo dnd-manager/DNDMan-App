@@ -1,5 +1,4 @@
 import 'package:dndman_app/dnd/player/character_creation.dart';
-import 'package:dndman_app/dnd/player/generator_components/dice_roll.dart';
 import 'package:dndman_app/form_generator/annotations/reflector.dart';
 import 'package:dndman_app/form_generator/generators/base.dart';
 import 'package:dndman_app/form_generator/generators/bool.dart';
@@ -37,14 +36,12 @@ void main() {
   initializeReflectable();
 
   reflectables.add(FrontCharacterPart1);
-  reflectables.add(FrontDiceRoll);
 
   formGeneratorComponents.add(BoolFormGeneratorComponent());
   formGeneratorComponents.add(EnumFormGeneratorComponent());
   formGeneratorComponents.add(NumberFormGeneratorComponent());
   formGeneratorComponents.add(RangeFormGeneratorComponent());
   formGeneratorComponents.add(StringFormGeneratorComponent());
-  formGeneratorComponents.add(DiceRollFormGeneratorComponent());
 
   runApp(const Application());
 }
@@ -65,7 +62,9 @@ class Application extends StatelessWidget {
         SignUpPageWidget.route: (context) => const SignUpPageWidget(),
         ProfilePageWidget.route: (context) => const ProfilePageWidget(),
         PlayerPageWidget.route: (context) => const PlayerPageWidget(),
-        CharacterCreatorPageWidget.route: (context) => CharacterCreatorPageWidget(),
+        CharacterCreatorPage1RaceSelectionWidget.route: (context) => const CharacterCreatorPage1RaceSelectionWidget(),
+        CharacterCreatorPage2ClassSelectionWidget.route: (context) => const CharacterCreatorPage2ClassSelectionWidget(),
+        CharacterCreatorPage3Widget.route: (context) => const CharacterCreatorPage3Widget(),
         DMPageWidget.route: (context) => const DMPageWidget(),
       },
       debugShowCheckedModeBanner: false,

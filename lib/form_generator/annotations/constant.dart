@@ -1,0 +1,3 @@
+class FormConstant {
+  const FormConstant();
+}

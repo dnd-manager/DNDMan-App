@@ -15,6 +15,7 @@ class NumberFormGeneratorComponent with FormGeneratorComponent {
         value,
         variableMirror,
         fields,
+        annotations,
       ));
     } else {
       fields.putIfAbsent(variableMirror.simpleName, () => value);

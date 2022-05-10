@@ -14,6 +14,7 @@ class StringFormGeneratorComponent with FormGeneratorComponent<String> {
       value,
       variableMirror,
       fields,
+      annotations,
     ));
   }
 
