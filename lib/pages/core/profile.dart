@@ -1,5 +1,3 @@
-import 'package:dndman_app/api/api_client.dart';
-import 'package:dndman_app/api/data/auth/user.dart';
 import 'package:dndman_app/pages/core/base.dart';
 import 'package:dndman_app/pages/core/home.dart';
 import 'package:dndman_app/pages/dm/dm.dart';

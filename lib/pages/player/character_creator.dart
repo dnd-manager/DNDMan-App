@@ -1,20 +1,69 @@
-import 'package:dndman_app/api/data/dnd/dnd_enums.dart';
 import 'package:dndman_app/dnd/player/character_creation.dart';
 import 'package:dndman_app/form_generator/form_generator.dart';
 import 'package:dndman_app/pages/core/base.dart';
 import 'package:dndman_app/pages/player/player.dart';
 import 'package:dndman_app/utils/text.dart';
-import 'package:dndman_app/utils/text.dart';
-import 'package:dndman_app/utils/text.dart';
-import 'package:dndman_app/utils/text.dart';
 import 'package:dndman_app/widgets/utils/button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CharacterCreatorPageWidget extends StatelessWidget with DNDManPageMixin {
-  static const String route = "/player/character_creator";
+class CharacterCreatorPage1RaceSelectionWidget extends StatelessWidget with DNDManPageMixin {
+  static const String route = "/player/character_creator/1";
 
-  CharacterCreatorPageWidget({Key? key}) : super(key: key);
+  const CharacterCreatorPage1RaceSelectionWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget make(BuildContext context) {
+    return Container();
+  }
+
+  @override
+  List<Widget> navbarItems(BuildContext context) {
+    return [
+      DNDManButtonWidget(
+        onPressed: () {
+          Navigator.pushReplacementNamed(context, PlayerPageWidget.route);
+        },
+        child: const DNDManButtonLabel(
+          text: 'Player View',
+          icon: Icons.arrow_back,
+        ),
+      ),
+    ];
+  }
+}
+
+class CharacterCreatorPage2ClassSelectionWidget extends StatelessWidget with DNDManPageMixin {
+  static const String route = "/player/character_creator/2";
+
+  const CharacterCreatorPage2ClassSelectionWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget make(BuildContext context) {
+    return Container();
+  }
+
+  @override
+  List<Widget> navbarItems(BuildContext context) {
+    return [
+      DNDManButtonWidget(
+        onPressed: () {
+          _showWarning(context, CharacterCreatorPage1RaceSelectionWidget.route);
+        },
+        child: const DNDManButtonLabel(
+          text: 'Last step',
+          icon: Icons.arrow_back,
+        ),
+      ),
+    ];
+  }
+}
+
+
+class CharacterCreatorPage3Widget extends StatelessWidget with DNDManPageMixin {
+  static const String route = "/player/character_creator/3";
+
+  const CharacterCreatorPage3Widget({Key? key}) : super(key: key);
 
   @override
   Widget make(BuildContext context) {
@@ -50,50 +99,54 @@ class CharacterCreatorPageWidget extends StatelessWidget with DNDManPageMixin {
     return [
       DNDManButtonWidget(
         onPressed: () {
-          showDialog<void>(
-            context: context,
-            builder: (BuildContext dialogContext) {
-              return AlertDialog(
-                title: Text(
-                  "Are you sure?",
-                  style: DNDTextStyle.normalText(),
-                ),
-                content: Text(
-                  "You will lose your progress if you leave",
-                  style: DNDTextStyle.normalText(),
-                ),
-                actions: [
-                  DNDManButtonWidget(
-                    onPressed: () {
-                      Navigator.pushReplacementNamed(
-                        context,
-                        PlayerPageWidget.route,
-                      );
-                    },
-                    child: Text(
-                      "Confirm",
-                      style: DNDTextStyle.normalText(),
-                    ),
-                  ),
-                  DNDManButtonWidget(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: Text(
-                      "Cancel",
-                      style: DNDTextStyle.normalText(),
-                    ),
-                  ),
-                ],
-              );
-            },
-          );
+          _showWarning(context, CharacterCreatorPage2ClassSelectionWidget.route);
         },
         child: const DNDManButtonLabel(
-          text: 'Player',
+          text: 'Last Step',
           icon: Icons.arrow_back,
         ),
       ),
     ];
   }
+}
+
+void _showWarning(BuildContext context, String route) {
+  showDialog<void>(
+    context: context,
+    builder: (BuildContext dialogContext) {
+      return AlertDialog(
+        title: Text(
+          "Are you sure?",
+          style: DNDTextStyle.normalText(),
+        ),
+        content: Text(
+          "You will lose your progress if you leave",
+          style: DNDTextStyle.normalText(),
+        ),
+        actions: [
+          DNDManButtonWidget(
+            onPressed: () {
+              Navigator.pushReplacementNamed(
+                context,
+                route,
+              );
+            },
+            child: Text(
+              "Confirm",
+              style: DNDTextStyle.normalText(),
+            ),
+          ),
+          DNDManButtonWidget(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text(
+              "Cancel",
+              style: DNDTextStyle.normalText(),
+            ),
+          ),
+        ],
+      );
+    },
+  );
 }

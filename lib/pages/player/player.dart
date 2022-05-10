@@ -52,7 +52,7 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> with DNDManPageMixi
       ),
       DNDManButtonWidget(
         onPressed: () {
-          Navigator.pushReplacementNamed(context, CharacterCreatorPageWidget.route);
+          Navigator.pushReplacementNamed(context, CharacterCreatorPage1RaceSelectionWidget.route);
         },
         child: const DNDManButtonLabel(
           icon: Icons.newspaper,

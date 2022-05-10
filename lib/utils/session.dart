@@ -1,4 +1,4 @@
-import 'package:dndman_app/api/data/auth/user_signed_in.dart';
+import 'package:dndman_app/api/dndman/data/auth/user_signed_in.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
 
 class SessionManagement {
