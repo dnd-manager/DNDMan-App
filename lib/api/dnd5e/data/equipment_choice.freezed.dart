@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'choice.dart';
+part of 'equipment_choice.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,36 +14,38 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Choice<T> _$ChoiceFromJson<T>(Map<String, dynamic> json) {
-  return _Choice<T>.fromJson(json);
+EquipmentChoice<T> _$EquipmentChoiceFromJson<T>(Map<String, dynamic> json) {
+  return _EquipmentChoice<T>.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Choice<T> {
+mixin _$EquipmentChoice<T> {
   int get choose => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
-  List<T> get from => throw _privateConstructorUsedError;
+  List<Equipment> get from => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ChoiceCopyWith<T, Choice<T>> get copyWith =>
+  $EquipmentChoiceCopyWith<T, EquipmentChoice<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ChoiceCopyWith<T, $Res> {
-  factory $ChoiceCopyWith(Choice<T> value, $Res Function(Choice<T>) then) =
-      _$ChoiceCopyWithImpl<T, $Res>;
-  $Res call({int choose, String type, List<T> from});
+abstract class $EquipmentChoiceCopyWith<T, $Res> {
+  factory $EquipmentChoiceCopyWith(
+          EquipmentChoice<T> value, $Res Function(EquipmentChoice<T>) then) =
+      _$EquipmentChoiceCopyWithImpl<T, $Res>;
+  $Res call({int choose, String type, List<Equipment> from});
 }
 
 /// @nodoc
-class _$ChoiceCopyWithImpl<T, $Res> implements $ChoiceCopyWith<T, $Res> {
-  _$ChoiceCopyWithImpl(this._value, this._then);
+class _$EquipmentChoiceCopyWithImpl<T, $Res>
+    implements $EquipmentChoiceCopyWith<T, $Res> {
+  _$EquipmentChoiceCopyWithImpl(this._value, this._then);
 
-  final Choice<T> _value;
+  final EquipmentChoice<T> _value;
   // ignore: unused_field
-  final $Res Function(Choice<T>) _then;
+  final $Res Function(EquipmentChoice<T>) _then;
 
   @override
   $Res call({
@@ -63,27 +65,31 @@ class _$ChoiceCopyWithImpl<T, $Res> implements $ChoiceCopyWith<T, $Res> {
       from: from == freezed
           ? _value.from
           : from // ignore: cast_nullable_to_non_nullable
-              as List<T>,
+              as List<Equipment>,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$ChoiceCopyWith<T, $Res> implements $ChoiceCopyWith<T, $Res> {
-  factory _$ChoiceCopyWith(_Choice<T> value, $Res Function(_Choice<T>) then) =
-      __$ChoiceCopyWithImpl<T, $Res>;
+abstract class _$EquipmentChoiceCopyWith<T, $Res>
+    implements $EquipmentChoiceCopyWith<T, $Res> {
+  factory _$EquipmentChoiceCopyWith(
+          _EquipmentChoice<T> value, $Res Function(_EquipmentChoice<T>) then) =
+      __$EquipmentChoiceCopyWithImpl<T, $Res>;
   @override
-  $Res call({int choose, String type, List<T> from});
+  $Res call({int choose, String type, List<Equipment> from});
 }
 
 /// @nodoc
-class __$ChoiceCopyWithImpl<T, $Res> extends _$ChoiceCopyWithImpl<T, $Res>
-    implements _$ChoiceCopyWith<T, $Res> {
-  __$ChoiceCopyWithImpl(_Choice<T> _value, $Res Function(_Choice<T>) _then)
-      : super(_value, (v) => _then(v as _Choice<T>));
+class __$EquipmentChoiceCopyWithImpl<T, $Res>
+    extends _$EquipmentChoiceCopyWithImpl<T, $Res>
+    implements _$EquipmentChoiceCopyWith<T, $Res> {
+  __$EquipmentChoiceCopyWithImpl(
+      _EquipmentChoice<T> _value, $Res Function(_EquipmentChoice<T>) _then)
+      : super(_value, (v) => _then(v as _EquipmentChoice<T>));
 
   @override
-  _Choice<T> get _value => super._value as _Choice<T>;
+  _EquipmentChoice<T> get _value => super._value as _EquipmentChoice<T>;
 
   @override
   $Res call({
@@ -91,7 +97,7 @@ class __$ChoiceCopyWithImpl<T, $Res> extends _$ChoiceCopyWithImpl<T, $Res>
     Object? type = freezed,
     Object? from = freezed,
   }) {
-    return _then(_Choice<T>(
+    return _then(_EquipmentChoice<T>(
       choose: choose == freezed
           ? _value.choose
           : choose // ignore: cast_nullable_to_non_nullable
@@ -103,43 +109,45 @@ class __$ChoiceCopyWithImpl<T, $Res> extends _$ChoiceCopyWithImpl<T, $Res>
       from: from == freezed
           ? _value.from
           : from // ignore: cast_nullable_to_non_nullable
-              as List<T>,
+              as List<Equipment>,
     ));
   }
 }
 
 /// @nodoc
 
-@JsonSerializable(explicitToJson: true, genericArgumentFactories: true)
-class _$_Choice<T> implements _Choice<T> {
-  const _$_Choice(
-      {required this.choose, required this.type, required final List<T> from})
+@JsonSerializable(explicitToJson: true)
+class _$_EquipmentChoice<T> implements _EquipmentChoice<T> {
+  const _$_EquipmentChoice(
+      {required this.choose,
+      required this.type,
+      required final List<Equipment> from})
       : _from = from;
 
-  factory _$_Choice.fromJson(Map<String, dynamic> json) =>
-      _$$_ChoiceFromJson(json);
+  factory _$_EquipmentChoice.fromJson(Map<String, dynamic> json) =>
+      _$$_EquipmentChoiceFromJson(json);
 
   @override
   final int choose;
   @override
   final String type;
-  final List<T> _from;
+  final List<Equipment> _from;
   @override
-  List<T> get from {
+  List<Equipment> get from {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_from);
   }
 
   @override
   String toString() {
-    return 'Choice<$T>(choose: $choose, type: $type, from: $from)';
+    return 'EquipmentChoice<$T>(choose: $choose, type: $type, from: $from)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Choice<T> &&
+            other is _EquipmentChoice<T> &&
             const DeepCollectionEquality().equals(other.choose, choose) &&
             const DeepCollectionEquality().equals(other.type, type) &&
             const DeepCollectionEquality().equals(other.from, from));
@@ -155,31 +163,32 @@ class _$_Choice<T> implements _Choice<T> {
 
   @JsonKey(ignore: true)
   @override
-  _$ChoiceCopyWith<T, _Choice<T>> get copyWith =>
-      __$ChoiceCopyWithImpl<T, _Choice<T>>(this, _$identity);
+  _$EquipmentChoiceCopyWith<T, _EquipmentChoice<T>> get copyWith =>
+      __$EquipmentChoiceCopyWithImpl<T, _EquipmentChoice<T>>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ChoiceToJson(this);
+    return _$$_EquipmentChoiceToJson(this);
   }
 }
 
-abstract class _Choice<T> implements Choice<T> {
-  const factory _Choice(
+abstract class _EquipmentChoice<T> implements EquipmentChoice<T> {
+  const factory _EquipmentChoice(
       {required final int choose,
       required final String type,
-      required final List<T> from}) = _$_Choice<T>;
+      required final List<Equipment> from}) = _$_EquipmentChoice<T>;
 
-  factory _Choice.fromJson(Map<String, dynamic> json) = _$_Choice<T>.fromJson;
+  factory _EquipmentChoice.fromJson(Map<String, dynamic> json) =
+      _$_EquipmentChoice<T>.fromJson;
 
   @override
   int get choose => throw _privateConstructorUsedError;
   @override
   String get type => throw _privateConstructorUsedError;
   @override
-  List<T> get from => throw _privateConstructorUsedError;
+  List<Equipment> get from => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ChoiceCopyWith<T, _Choice<T>> get copyWith =>
+  _$EquipmentChoiceCopyWith<T, _EquipmentChoice<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -23,12 +23,12 @@ mixin _$Class {
   String get index => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   int get hit_die => throw _privateConstructorUsedError;
-  List<Choice<IndexObject>> get proficiency_choices =>
+  List<IndexObjectChoice> get proficiency_choices =>
       throw _privateConstructorUsedError;
   List<IndexObject> get proficiencies => throw _privateConstructorUsedError;
   List<IndexObject> get saving_throws => throw _privateConstructorUsedError;
   List<Equipment> get starting_equipment => throw _privateConstructorUsedError;
-  List<Choice<Equipment>> get starting_equipment_options =>
+  List<EquipmentChoice> get starting_equipment_options =>
       throw _privateConstructorUsedError;
   String get class_levels => throw _privateConstructorUsedError;
   MultiClass get multi_classing => throw _privateConstructorUsedError;
@@ -50,11 +50,11 @@ abstract class $ClassCopyWith<$Res> {
       {String index,
       String name,
       int hit_die,
-      List<Choice<IndexObject>> proficiency_choices,
+      List<IndexObjectChoice> proficiency_choices,
       List<IndexObject> proficiencies,
       List<IndexObject> saving_throws,
       List<Equipment> starting_equipment,
-      List<Choice<Equipment>> starting_equipment_options,
+      List<EquipmentChoice> starting_equipment_options,
       String class_levels,
       MultiClass multi_classing,
       List<IndexObject> subclasses,
@@ -107,7 +107,7 @@ class _$ClassCopyWithImpl<$Res> implements $ClassCopyWith<$Res> {
       proficiency_choices: proficiency_choices == freezed
           ? _value.proficiency_choices
           : proficiency_choices // ignore: cast_nullable_to_non_nullable
-              as List<Choice<IndexObject>>,
+              as List<IndexObjectChoice>,
       proficiencies: proficiencies == freezed
           ? _value.proficiencies
           : proficiencies // ignore: cast_nullable_to_non_nullable
@@ -123,7 +123,7 @@ class _$ClassCopyWithImpl<$Res> implements $ClassCopyWith<$Res> {
       starting_equipment_options: starting_equipment_options == freezed
           ? _value.starting_equipment_options
           : starting_equipment_options // ignore: cast_nullable_to_non_nullable
-              as List<Choice<Equipment>>,
+              as List<EquipmentChoice>,
       class_levels: class_levels == freezed
           ? _value.class_levels
           : class_levels // ignore: cast_nullable_to_non_nullable
@@ -175,11 +175,11 @@ abstract class _$ClassCopyWith<$Res> implements $ClassCopyWith<$Res> {
       {String index,
       String name,
       int hit_die,
-      List<Choice<IndexObject>> proficiency_choices,
+      List<IndexObjectChoice> proficiency_choices,
       List<IndexObject> proficiencies,
       List<IndexObject> saving_throws,
       List<Equipment> starting_equipment,
-      List<Choice<Equipment>> starting_equipment_options,
+      List<EquipmentChoice> starting_equipment_options,
       String class_levels,
       MultiClass multi_classing,
       List<IndexObject> subclasses,
@@ -235,7 +235,7 @@ class __$ClassCopyWithImpl<$Res> extends _$ClassCopyWithImpl<$Res>
       proficiency_choices: proficiency_choices == freezed
           ? _value.proficiency_choices
           : proficiency_choices // ignore: cast_nullable_to_non_nullable
-              as List<Choice<IndexObject>>,
+              as List<IndexObjectChoice>,
       proficiencies: proficiencies == freezed
           ? _value.proficiencies
           : proficiencies // ignore: cast_nullable_to_non_nullable
@@ -251,7 +251,7 @@ class __$ClassCopyWithImpl<$Res> extends _$ClassCopyWithImpl<$Res>
       starting_equipment_options: starting_equipment_options == freezed
           ? _value.starting_equipment_options
           : starting_equipment_options // ignore: cast_nullable_to_non_nullable
-              as List<Choice<Equipment>>,
+              as List<EquipmentChoice>,
       class_levels: class_levels == freezed
           ? _value.class_levels
           : class_levels // ignore: cast_nullable_to_non_nullable
@@ -288,11 +288,11 @@ class _$_Class implements _Class {
       {required this.index,
       required this.name,
       required this.hit_die,
-      required final List<Choice<IndexObject>> proficiency_choices,
+      required final List<IndexObjectChoice> proficiency_choices,
       required final List<IndexObject> proficiencies,
       required final List<IndexObject> saving_throws,
       required final List<Equipment> starting_equipment,
-      required final List<Choice<Equipment>> starting_equipment_options,
+      required final List<EquipmentChoice> starting_equipment_options,
       required this.class_levels,
       required this.multi_classing,
       required final List<IndexObject> subclasses,
@@ -315,9 +315,9 @@ class _$_Class implements _Class {
   final String name;
   @override
   final int hit_die;
-  final List<Choice<IndexObject>> _proficiency_choices;
+  final List<IndexObjectChoice> _proficiency_choices;
   @override
-  List<Choice<IndexObject>> get proficiency_choices {
+  List<IndexObjectChoice> get proficiency_choices {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_proficiency_choices);
   }
@@ -343,9 +343,9 @@ class _$_Class implements _Class {
     return EqualUnmodifiableListView(_starting_equipment);
   }
 
-  final List<Choice<Equipment>> _starting_equipment_options;
+  final List<EquipmentChoice> _starting_equipment_options;
   @override
-  List<Choice<Equipment>> get starting_equipment_options {
+  List<EquipmentChoice> get starting_equipment_options {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_starting_equipment_options);
   }
@@ -438,11 +438,11 @@ abstract class _Class implements Class {
       {required final String index,
       required final String name,
       required final int hit_die,
-      required final List<Choice<IndexObject>> proficiency_choices,
+      required final List<IndexObjectChoice> proficiency_choices,
       required final List<IndexObject> proficiencies,
       required final List<IndexObject> saving_throws,
       required final List<Equipment> starting_equipment,
-      required final List<Choice<Equipment>> starting_equipment_options,
+      required final List<EquipmentChoice> starting_equipment_options,
       required final String class_levels,
       required final MultiClass multi_classing,
       required final List<IndexObject> subclasses,
@@ -459,7 +459,7 @@ abstract class _Class implements Class {
   @override
   int get hit_die => throw _privateConstructorUsedError;
   @override
-  List<Choice<IndexObject>> get proficiency_choices =>
+  List<IndexObjectChoice> get proficiency_choices =>
       throw _privateConstructorUsedError;
   @override
   List<IndexObject> get proficiencies => throw _privateConstructorUsedError;
@@ -468,7 +468,7 @@ abstract class _Class implements Class {
   @override
   List<Equipment> get starting_equipment => throw _privateConstructorUsedError;
   @override
-  List<Choice<Equipment>> get starting_equipment_options =>
+  List<EquipmentChoice> get starting_equipment_options =>
       throw _privateConstructorUsedError;
   @override
   String get class_levels => throw _privateConstructorUsedError;

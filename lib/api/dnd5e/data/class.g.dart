@@ -11,7 +11,8 @@ _$_Class _$$_ClassFromJson(Map<String, dynamic> json) => _$_Class(
       name: json['name'] as String,
       hit_die: json['hit_die'] as int,
       proficiency_choices: (json['proficiency_choices'] as List<dynamic>)
-          .map((e) => Choice<IndexObject>.fromJson(e as Map<String, dynamic>))
+          .map((e) =>
+              IndexObjectChoice<dynamic>.fromJson(e as Map<String, dynamic>))
           .toList(),
       proficiencies: (json['proficiencies'] as List<dynamic>)
           .map((e) => IndexObject.fromJson(e as Map<String, dynamic>))
@@ -24,7 +25,8 @@ _$_Class _$$_ClassFromJson(Map<String, dynamic> json) => _$_Class(
           .toList(),
       starting_equipment_options:
           (json['starting_equipment_options'] as List<dynamic>)
-              .map((e) => Choice<Equipment>.fromJson(e as Map<String, dynamic>))
+              .map((e) =>
+                  EquipmentChoice<dynamic>.fromJson(e as Map<String, dynamic>))
               .toList(),
       class_levels: json['class_levels'] as String,
       multi_classing:

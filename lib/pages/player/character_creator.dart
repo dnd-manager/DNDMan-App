@@ -6,27 +6,27 @@ import 'package:dndman_app/pages/core/base.dart';
 import 'package:dndman_app/pages/player/player.dart';
 import 'package:dndman_app/utils/text.dart';
 import 'package:dndman_app/widgets/utils/button.dart';
+import 'package:dndman_app/widgets/utils/race.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CharacterCreatorPage1RaceSelectionWidget extends StatelessWidget
-    with DNDManPageMixin {
+class CharacterCreatorPage1RaceSelectionWidget extends StatelessWidget with DNDManPageMixin {
   static const String route = "/player/character_creator/1";
 
   const CharacterCreatorPage1RaceSelectionWidget({Key? key}) : super(key: key);
 
   @override
   Widget make(BuildContext context) {
-    return FutureBuilder<List<Race>>(
-      future: DNDAPIClient.instance.getRaces(),
-      builder: (ctx, userIDSnapshot) {
-        if (userIDSnapshot.connectionState == ConnectionState.done) {
-          print(userIDSnapshot.data!);
-          return Container();
-        } else {
-          return Container();
-        }
-      }
+    return FutureBuilder<Race?>(
+      future: DND5EAPIClient.instance.getRace("dragonborn"),
+      builder: (ctx, item) => item.connectionState == ConnectionState.done ? Center(
+        child: AspectRatio(
+          aspectRatio: 2.5/3,
+          child: RaceWidget(
+            race: item.data!,
+          ),
+        ),
+      ) : Container(),
     );
   }
 
@@ -96,6 +96,7 @@ class CharacterCreatorPage3Widget extends StatelessWidget with DNDManPageMixin {
                 child: GeneratedForm(
                   object: const FrontCharacterPart1(),
                   onSubmit: (fields) {
+                    DND5EAPIClient.instance.getRaces().then((value) => print(value));
                     print(fields);
                   },
                 ),

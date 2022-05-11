@@ -15,7 +15,8 @@ _$_MultiClass _$$_MultiClassFromJson(Map<String, dynamic> json) =>
           .map((e) => IndexObject.fromJson(e as Map<String, dynamic>))
           .toList(),
       proficiency_choices: (json['proficiency_choices'] as List<dynamic>)
-          .map((e) => Choice<IndexObject>.fromJson(e as Map<String, dynamic>))
+          .map((e) =>
+              IndexObjectChoice<dynamic>.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

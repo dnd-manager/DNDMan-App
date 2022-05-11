@@ -1,14 +1,16 @@
 import 'dart:convert';
 
 import 'package:dndman_app/api/dnd5e/data/class.dart';
+import 'package:dndman_app/api/dnd5e/data/index_object.dart';
 import 'package:dndman_app/api/dnd5e/data/race.dart';
 import 'package:dndman_app/api/dnd5e/data_types.dart';
 import 'package:http/http.dart';
 import 'package:recase/recase.dart';
 
-class DNDAPIClient {
-  static final DNDAPIClient instance = DNDAPIClient();
+class DND5EAPIClient {
+  static final DND5EAPIClient instance = DND5EAPIClient();
   static const String _serverURL = "https://www.dnd5eapi.co/api";
+  static const String _rawServerURL = "https://www.dnd5eapi.co";
 
   final Client client = Client();
 
@@ -44,7 +46,7 @@ class DNDAPIClient {
 
     if (_handleResponse(responseCode)) {
       for (var item in racesRaw["results"]) {
-        races.add(Race.fromJson(await getData(Uri.parse("https://www.dnd5eapi.co" + item.url))));
+        races.add(Race.fromJson(await getIndexObjectData(IndexObject.fromJson(item))));
       }
     }
 
@@ -66,6 +68,10 @@ class DNDAPIClient {
     }
 
     return null;
+  }
+
+  Future<Map<String, dynamic>> getIndexObjectData(IndexObject indexObject) async {
+    return await getData(getUriFromIndexUrl(indexObject.url));
   }
 
   Future<Map<String, dynamic>> getData(Uri uri) async {
@@ -90,6 +96,10 @@ class DNDAPIClient {
       return true;
     }
     return false;
+  }
+
+  Uri getUriFromIndexUrl(String url) {
+    return Uri.parse(_rawServerURL + url);
   }
 
   Uri _getUri(DND5EAPIRequestType requestType, String name) {

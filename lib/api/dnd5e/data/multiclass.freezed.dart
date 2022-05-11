@@ -22,7 +22,7 @@ MultiClass _$MultiClassFromJson(Map<String, dynamic> json) {
 mixin _$MultiClass {
   List<Prerequisite> get prerequisites => throw _privateConstructorUsedError;
   List<IndexObject> get proficiencies => throw _privateConstructorUsedError;
-  List<Choice<IndexObject>> get proficiency_choices =>
+  List<IndexObjectChoice> get proficiency_choices =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ abstract class $MultiClassCopyWith<$Res> {
   $Res call(
       {List<Prerequisite> prerequisites,
       List<IndexObject> proficiencies,
-      List<Choice<IndexObject>> proficiency_choices});
+      List<IndexObjectChoice> proficiency_choices});
 }
 
 /// @nodoc
@@ -68,7 +68,7 @@ class _$MultiClassCopyWithImpl<$Res> implements $MultiClassCopyWith<$Res> {
       proficiency_choices: proficiency_choices == freezed
           ? _value.proficiency_choices
           : proficiency_choices // ignore: cast_nullable_to_non_nullable
-              as List<Choice<IndexObject>>,
+              as List<IndexObjectChoice>,
     ));
   }
 }
@@ -82,7 +82,7 @@ abstract class _$MultiClassCopyWith<$Res> implements $MultiClassCopyWith<$Res> {
   $Res call(
       {List<Prerequisite> prerequisites,
       List<IndexObject> proficiencies,
-      List<Choice<IndexObject>> proficiency_choices});
+      List<IndexObjectChoice> proficiency_choices});
 }
 
 /// @nodoc
@@ -113,7 +113,7 @@ class __$MultiClassCopyWithImpl<$Res> extends _$MultiClassCopyWithImpl<$Res>
       proficiency_choices: proficiency_choices == freezed
           ? _value.proficiency_choices
           : proficiency_choices // ignore: cast_nullable_to_non_nullable
-              as List<Choice<IndexObject>>,
+              as List<IndexObjectChoice>,
     ));
   }
 }
@@ -125,7 +125,7 @@ class _$_MultiClass implements _MultiClass {
   const _$_MultiClass(
       {required final List<Prerequisite> prerequisites,
       required final List<IndexObject> proficiencies,
-      required final List<Choice<IndexObject>> proficiency_choices})
+      required final List<IndexObjectChoice> proficiency_choices})
       : _prerequisites = prerequisites,
         _proficiencies = proficiencies,
         _proficiency_choices = proficiency_choices;
@@ -147,9 +147,9 @@ class _$_MultiClass implements _MultiClass {
     return EqualUnmodifiableListView(_proficiencies);
   }
 
-  final List<Choice<IndexObject>> _proficiency_choices;
+  final List<IndexObjectChoice> _proficiency_choices;
   @override
-  List<Choice<IndexObject>> get proficiency_choices {
+  List<IndexObjectChoice> get proficiency_choices {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_proficiency_choices);
   }
@@ -195,7 +195,7 @@ abstract class _MultiClass implements MultiClass {
   const factory _MultiClass(
           {required final List<Prerequisite> prerequisites,
           required final List<IndexObject> proficiencies,
-          required final List<Choice<IndexObject>> proficiency_choices}) =
+          required final List<IndexObjectChoice> proficiency_choices}) =
       _$_MultiClass;
 
   factory _MultiClass.fromJson(Map<String, dynamic> json) =
@@ -206,7 +206,7 @@ abstract class _MultiClass implements MultiClass {
   @override
   List<IndexObject> get proficiencies => throw _privateConstructorUsedError;
   @override
-  List<Choice<IndexObject>> get proficiency_choices =>
+  List<IndexObjectChoice> get proficiency_choices =>
       throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
