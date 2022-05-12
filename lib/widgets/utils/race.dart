@@ -81,7 +81,7 @@ class RaceWidget extends StatelessWidget {
                   title: Text(
                     bonus.ability_score.name,
                     style: DNDTextStyle.normalText(
-                      fontSize: constraints.maxWidth / 30,
+                      fontSize: constraints.maxWidth / 40,
                     ),
                   ),
                   subtitle: Text(
