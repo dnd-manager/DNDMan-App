@@ -10,5 +10,5 @@ enum DND5EAPIRequestType {
   abilityScores,
   proficiencies,
   languages,
-  traits,
+  traits;
 }
