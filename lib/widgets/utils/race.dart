@@ -1,8 +1,12 @@
 import 'package:dndman_app/api/dnd5e/data/race.dart';
 import 'package:dndman_app/api/dnd5e/data/trait.dart';
+import 'package:dndman_app/api/dnd5e/data_types.dart';
 import 'package:dndman_app/api/dnd5e/dnd_api_client.dart';
+import 'package:dndman_app/pages/info/argument.dart';
+import 'package:dndman_app/pages/info/info.dart';
 import 'package:dndman_app/utils/text.dart';
 import 'package:dndman_app/widgets/utils/description.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class RaceWidget extends StatelessWidget {
@@ -101,8 +105,6 @@ class RaceWidget extends StatelessWidget {
               descriptionSize: constraints.maxWidth / 40,
             ),
 
-
-
           // traits
           if (race.traits.isNotEmpty)
             Text(
@@ -118,21 +120,44 @@ class RaceWidget extends StatelessWidget {
               for (var traitIndex in race.traits)
                 FutureBuilder<Map<String, dynamic>>(
                   future: DND5EAPIClient.instance.getIndexObjectData(traitIndex),
-                  builder: (ctx, asyncSnapshot) =>
-                      asyncSnapshot.connectionState == ConnectionState.done
-                          ? ListTile(
-                              leading: const Icon(
-                                Icons.circle,
-                                size: 15,
-                              ),
-                              title: Text(
-                                Trait.fromJson(asyncSnapshot.data!).name,
-                                style: DNDTextStyle.normalText(
-                                  fontSize: constraints.maxWidth / 40,
-                                ),
-                              ),
+                  builder: (ctx, asyncSnapshot) {
+                    var trait = Trait.fromJson(asyncSnapshot.data!);
+                    if (asyncSnapshot.connectionState == ConnectionState.done && asyncSnapshot.hasData) {
+                      return ListTile(
+                        leading: const Icon(
+                          Icons.circle,
+                          size: 15,
+                        ),
+                        title: Tooltip(
+                          richMessage: TextSpan(children: [
+                            TextSpan(
+                              text: trait.desc[0],
+                            ),
+                            TextSpan(
+                              text: "\n\nMore info",
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  Navigator.pushReplacementNamed(
+                                      context, DNDInfoPageWidget.route,
+                                      arguments: DNDInfoPageArgument(
+                                        type: DND5EAPIRequestType.traits,
+                                        name: trait.index,
+                                      ));
+                                },
                             )
-                          : Container(),
+                          ]),
+                          child: Text(
+                            trait.name,
+                            style: DNDTextStyle.normalText(
+                              fontSize: constraints.maxWidth / 40,
+                            ),
+                          ),
+                        ),
+                      );
+                    } else {
+                      return const CircularProgressIndicator();
+                    }
+                  },
                 ),
             ],
           ),
